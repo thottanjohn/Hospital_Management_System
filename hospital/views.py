@@ -7,8 +7,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.shortcuts import render,redirect,render_to_response
 #from .models import Picto,userlike,Profile
-from .models import Department
-from .forms import DoctorForm,DepartmentForm
+from .models import Department,Patient,Nurses,WorksFor,Doctors,Emergency,Admitted
+from .forms import DoctorForm,DepartmentForm,PatientForm,WorksforForm,NursesForm,AdmittedForm,EmergencyForm
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -20,11 +20,21 @@ from django.core.mail import EmailMessage
 import mysql.connector
 import sys
 # Create your views here.
-
+def dictfetchall(cursor):
+    "Return all rows from a cursor as a dict"
+    columns = [col[0] for col in cursor.description]
+    return [
+        dict(zip(columns, row))
+        for row in cursor.fetchall()
+    ]
 
 def home(request):
     #title="welcome %s"%request.user
-    return render(request,'index.html')
+    cursor = connection.cursor()
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor)
+    cursor.close()
+    return render(request,'index.html',{'departments':dept_dict})
 def adddept(request):
     if request.method == 'POST':
         dept_form = DepartmentForm(request.POST)
@@ -42,8 +52,172 @@ def adddept(request):
                     return redirect('home')
     else:
         dept_form = DepartmentForm()
-    return render(request,'addepartment.html',{'dept_form': dept_form})
+    cursor = connection.cursor()
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor)
+    cursor.close() 
+    return render(request,'addepartment.html',{'dept_form': dept_form,'departments':dept_dict})
 
+
+
+def addpatient(request):
+    if request.method == 'POST':
+        patient_form = PatientForm(request.POST)
+        admitted_form = AdmittedForm(request.POST)
+        cursor = connection.cursor()
+        if patient_form.is_valid()  and  admitted_form.is_valid():
+                    #print >>sys.stderr, type(int(request.POST['department_num']))
+                    patient_id = patient_form.cleaned_data['patient_id']
+                    #print >>sys.stderr,type(dept_num)
+                    patient_name = patient_form.cleaned_data['patient_name']
+                    dt_birth = patient_form.cleaned_data['dt_birth']
+                    patient_address = patient_form.cleaned_data['patient_address']
+                    add_patient = ("INSERT INTO Patient  VALUES (%s, %s, %s, %s)")
+                    data_patient = (patient_id,patient_name,dt_birth,patient_address)
+                    cursor.execute(add_patient, data_patient)
+                    patient_id = patient_form.cleaned_data['patient_id']
+                    department_num = admitted_form.cleaned_data['department_num']
+                    date_admission = admitted_form.cleaned_data['date_admission']
+                    date_discharge = admitted_form.cleaned_data['date_discharge']
+                    doctor = admitted_form.cleaned_data['doctor']
+                    prescription = admitted_form.cleaned_data['prescription']
+                    doctorgrade = admitted_form.cleaned_data['doctor_grade']
+                    add_admission = ("INSERT INTO Admitted(patient_id,department_num , date_admission , date_discharge  ,doctor_id, prescription , doctor_grade)  VALUES (%s,%s,%s, %s, %s,  %s, %s)")
+                    data_admission = (patient_id,department_num, date_admission , date_discharge ,doctor , prescription , doctorgrade)
+                    cursor.execute(add_admission, data_admission)
+                    cursor.close()
+                    return redirect('home')
+    else:
+        patient_form = PatientForm()
+        admitted_form = AdmittedForm()
+    cursor = connection.cursor()
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor)
+    cursor.close() 
+    return render(request,'addpatient.html',{'patient_form': patient_form,'admitted_form':admitted_form,'departments':dept_dict})
+
+def adddoctor(request):
+    if request.method == 'POST':
+        doctor_form = DoctorForm(request.POST)
+        work_for_form =WorksforForm(request.POST)
+        cursor = connection.cursor()
+        if doctor_form.is_valid() and work_for_form.is_valid()  :
+                    #print >>sys.stderr, type(int(request.POST['department_num']))
+                    doctor_id = doctor_form.cleaned_data['employee_id']
+                    #print >>sys.stderr,type(dept_num)
+                    doctor_name = doctor_form.cleaned_data['name']
+                    contact_no = doctor_form.cleaned_data['contact_number']
+                    grade = doctor_form.cleaned_data['grade']
+                    address = doctor_form.cleaned_data['address']
+                    add_doctor = ("INSERT INTO Doctors  VALUES (%s, %s, %s, %s,%s)")
+                    data_doctor = (doctor_id,doctor_name,address,contact_no,grade)
+                    cursor.execute(add_doctor,data_doctor)
+                    department_num = work_for_form.cleaned_data['department_num']
+                    schedule = work_for_form.cleaned_data['schedule']
+                    add_workfor = ("INSERT INTO Works_For (employee_id,department_num,schedule)  VALUES (%s,%s,%s)")
+                    data_workfor = (doctor_id,department_num,schedule)
+                    cursor.execute(add_workfor, data_workfor)
+                    cursor.close()
+                    return redirect('home')
+    else:
+        doctor_form = DoctorForm()
+        work_for_form = WorksforForm()
+    cursor = connection.cursor()
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor) 
+    cursor.close() 
+    return render(request,'adddoctor.html',{'doctor_form': doctor_form,'work_for_form':work_for_form,'departments':dept_dict})
+
+def displaydoctors(request):
+    cursor = connection.cursor()
+    cursor.execute("Select * from  Doctors NATURAL JOIN Works_For  NATURAL JOIN Department ");
+    doctors=dictfetchall(cursor)
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor)    
+    cursor.close()
+    return render(request,'doctors.html',{'doctors':doctors,'departments':dept_dict})
+
+def docprofile(request,doc_id):
+    cursor = connection.cursor()
+    cursor.execute("Select * from  Doctors NATURAL JOIN Works_For  NATURAL JOIN Department where employee_id =%s",doc_id);
+    doc_profile=dictfetchall(cursor)
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor)
+    print >>sys.stderr,doc_profile
+    cursor.close()
+    return render(request,'docdetail.html',{'doc_profile':doc_profile,'departments':dept_dict})
+
+
+def displaydept(request,dept_id):
+    cursor = connection.cursor()
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor)
+    cursor.execute("Select * from Department  where department_num=%s",dept_id);
+    dept=dictfetchall(cursor)
+    cursor.execute("Select * from  Doctors NATURAL JOIN Works_For  NATURAL JOIN Department where department_num=%s",dept_id);
+    doc_dict=dictfetchall(cursor)
+
+    cursor.execute("Select * from  Patient NATURAL JOIN Admitted  NATURAL JOIN Department where department_num=%s",dept_id);
+    patients=dictfetchall(cursor)
+    cursor.close()
+    return render(request,'department-1.html',{'doc_dict':doc_dict,'patients':patients,'departments':dept_dict,'dept':dept})
+"""
+def adddoctor(request):
+    if request.method == 'POST':
+        dept_form = DepartmentForm(request.POST)
+        cursor = connection.cursor()
+        if dept_form.is_valid():
+                    #print >>sys.stderr, type(int(request.POST['department_num']))
+                    dept_num = dept_form.cleaned_data['department_num']
+                    #print >>sys.stderr,type(dept_num)
+                    department_name = dept_form.cleaned_data['department_name']
+                    floor=dept_form.cleaned_data['floor']
+                    add_dept = ("INSERT INTO Department  VALUES (%s, %s, %s, %s)")
+                    data_dept = (dept_num,department_name,"0",floor)
+                    cursor.execute(add_dept, data_dept)
+                    cursor.close()
+                    return redirect('home')
+    else:
+        dept_form = DepartmentForm()
+    return render(request,'addepartment.html',{'dept_form': dept_form})
+def addnurse(request):
+    if request.method == 'POST':
+        dept_form = DepartmentForm(request.POST)
+        cursor = connection.cursor()
+        if dept_form.is_valid():
+                    #print >>sys.stderr, type(int(request.POST['department_num']))
+                    dept_num = dept_form.cleaned_data['department_num']
+                    #print >>sys.stderr,type(dept_num)
+                    department_name = dept_form.cleaned_data['department_name']
+                    floor=dept_form.cleaned_data['floor']
+                    add_dept = ("INSERT INTO Department  VALUES (%s, %s, %s, %s)")
+                    data_dept = (dept_num,department_name,"0",floor)
+                    cursor.execute(add_dept, data_dept)
+                    cursor.close()
+                    return redirect('home')
+    else:
+        dept_form = DepartmentForm()
+    return render(request,'addepartment.html',{'dept_form': dept_form})
+    
+def addemergency(request):
+    if request.method == 'POST':
+        dept_form = DepartmentForm(request.POST)
+        cursor = connection.cursor()
+        if dept_form.is_valid():
+                    #print >>sys.stderr, type(int(request.POST['department_num']))
+                    dept_num = dept_form.cleaned_data['department_num']
+                    #print >>sys.stderr,type(dept_num)
+                    department_name = dept_form.cleaned_data['department_name']
+                    floor=dept_form.cleaned_data['floor']
+                    add_dept = ("INSERT INTO Department  VALUES (%s, %s, %s, %s)")
+                    data_dept = (dept_num,department_name,"0",floor)
+                    cursor.execute(add_dept, data_dept)
+                    cursor.close()
+                    return redirect('home')
+    else:
+        dept_form = DepartmentForm()
+    return render(request,'addepartment.html',{'dept_form': dept_form})
+"""
 """
 @login_required
 def gallery(request):

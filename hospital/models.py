@@ -18,6 +18,10 @@ class Doctors(models.Model):
 
     class Meta:
         db_table = 'doctors'
+    def __str__(self):
+        return " %s" % self.employee_id
+    def __unicode__(self):
+        return u" %s" % self.employee_id
 class Patient(models.Model):
     patient_id = models.IntegerField(primary_key=True)
     patient_name = models.CharField(max_length=50)
@@ -26,6 +30,10 @@ class Patient(models.Model):
 
     class Meta:
         db_table = 'patient'
+    def __str__(self):
+            return " %s" % self.patient_id
+    def __unicode__(self):
+        return u" %s" % self.patient_id
 class Department(models.Model):
     department_num = models.IntegerField(primary_key=True)
     department_name = models.CharField(max_length=20)
@@ -34,10 +42,14 @@ class Department(models.Model):
 
     class Meta:
         db_table = 'department'
+    def __str__(self):
+        return " %s" % self.department_num
+    def __unicode__(self):
+        return u" %s" % self.department_num
 
 class WorksFor(models.Model):
-    department_num = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num', primary_key=True)
-    employee = models.ForeignKey(Doctors, models.DO_NOTHING)
+    department_num = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
+    employee = models.ForeignKey(Doctors, models.DO_NOTHING,primary_key=True)
     schedule = models.DateField(blank=True, null=True)
 
     class Meta:
@@ -64,6 +76,10 @@ class Nurses(models.Model):
 
     class Meta:
         db_table = 'nurses'
+    def __str__(self):
+        return " %s" % self.nurse_id
+    def __unicode__(self):
+        return u" %s" % self.nurse_id
 
 class Emergency(models.Model):
     date = models.DateField(primary_key=True)

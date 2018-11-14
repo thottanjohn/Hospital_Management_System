@@ -1,1 +1,920 @@
-<a id="add_dept" href="{% url 'adddept' %}">add</a>
+{% extends "base.html" %}
+    
+    {% load static %}
+
+    {% block content %}
+    
+
+
+<!-- Mirrored from heatmaponline.com/html/hseba/v-1.1/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Oct 2018 13:55:39 GMT -->
+<head>
+    
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="" />
+    <meta name="keywords" content="creative, portfolio, agency, template, theme, designed, html5, html, css3, responsive, onepage" />
+    <meta name="author" content="Set Private Limited" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <title>Hospital Management System</title>
+
+    <!-- Bootstrap CSS -->
+   
+
+
+  </head>
+
+  <body>
+
+        <!-- Slider start-->
+        <section class="banner-rev">
+            <div class="rev_slider_wrapper fullwidthbanner-container">
+                <!-- START REVOLUTION SLIDER 5.0 auto mode -->
+                <div id="rev_slider_one" class="rev_slider fullscreenbanner tp-overflow-hidden"  data-version="5.4.5" style="display:none">
+                    <ul>    
+                        <!-- SLIDE  -->
+                        <li data-transition="fade"
+                            data-title="Medical Service"
+                            data-param1="Get Best Medical Service"
+                            data-thumb="{% static 'images/slider/1-100x50.jpg' %}">
+
+                            
+                            <!-- MAIN IMAGE -->
+                            <img src="{% static 'images/slider/1.jpg' %}" alt="Slider Image" data-bgposition="center top" data-bgfit="cover" width="1620" height="1280">
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption slide-text"
+                                 data-x="['left', 'left', 'left', 'center']"
+                                 data-hoffset="35"
+                                 data-y="center" data-voffset="-100"
+                                 data-transform_idle="o:1;"         
+                                 data-transform_in="o:0" 
+                                 data-transform_out="o:0"                            
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['inherit', 'inherit', 'right', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+
+
+                                    ><h4>Get best medical service</h4>
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption slide-text"
+                                 data-x="['left', 'left', 'left', 'center']"
+                                 data-hoffset="35"
+                                 data-y="center" data-voffset="-20"
+                                 data-transform_idle="o:1;"         
+                                 data-transform_in="o:0" 
+                                 data-transform_out="o:0"                            
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['inherit', 'inherit', 'right', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+                                ><h2>Life Wellness<span class="color-defult"> Programs</span></h2> 
+                            </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption slide-text"
+                                 data-x="['left', 'left', 'left', 'center']"
+                                 data-hoffset="35"
+                                 data-y="center" data-voffset="70"
+                                 data-transform_idle="o:1;"         
+                                 data-transform_in="o:0" 
+                                 data-transform_out="o:0"                            
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['inherit', 'inherit', 'right', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+                                ><a class="btn btn-default" href="#">check our services</a>
+                            </div>
+                            
+                        </li>
+                        
+                        <!-- SLIDE  -->
+                        <li data-transition="boxfade"
+                            data-title="Medical Service"
+                            data-param1="Get Best Medical Service"
+                            data-thumb="{% static 'images/slider/2-100x50.jpg' %}">
+                            
+                            <!-- MAIN IMAGE -->
+                            <img src="{% static 'images/slider/2.jpg' %}" alt="Slider Image" data-bgposition="center top" data-bgfit="cover" width="1620" height="1280">
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption slide-text"                             
+                                 data-x="['right', 'right', 'right', 'center']"
+                                 data-hoffset="35"
+                                 data-y="center" data-voffset="-100"
+                                 data-transform_idle="o:1;"         
+                                 data-transform_in="o:0" 
+                                 data-transform_out="o:0"                            
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['right', 'right', 'right', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+                                ><h4>Get best medical service</h4> 
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption slide-text"
+                                 data-x="['right', 'right', 'right', 'center']"
+                                 data-hoffset="35"
+                                 data-y="center" data-voffset="-20"
+                                 data-transform_idle="o:1;"         
+                                 data-transform_in="o:0" 
+                                 data-transform_out="o:0"                            
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['right', 'right', 'right', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+                                ><h2>Life Wellness<span class="color-defult"> Programs</span></h2> 
+                            </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption slide-text"
+                                 data-x="['right', 'right', 'right', 'center']"
+                                 data-hoffset="35"
+                                 data-y="center" data-voffset="70"
+                                 data-transform_idle="o:1;"         
+                                 data-transform_in="o:0" 
+                                 data-transform_out="o:0"                            
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['right', 'right', 'right', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+                                ><a class="btn btn-default" href="#">check our services</a>
+                            </div>
+                            
+                        </li>
+
+                        <!-- SLIDE  -->
+                        <li data-transition="slotslide-vertical"
+                            data-title="Medical Service"
+                            data-param1="Get Best Medical Service"
+                            data-thumb="{% static 'images/slider/3-100x50.jpg' %}">
+                            
+                            <!-- MAIN IMAGE -->
+                            <img src="{% static 'images/slider/3.jpg' %}" alt="Slider Image" data-bgposition="center top" data-bgfit="cover" width="1620" height="1280">
+
+                            <!-- LAYER NR. 1 -->
+                            <div class="tp-caption slide-text"
+                                 data-x="['center', 'center', 'center', 'center']"
+                                 data-hoffset="35"
+                                 data-y="center"
+                                 data-voffset="-100"
+
+                                 data-transform_idle="o:1;"
+                                 data-transform_in="o:0"
+                                 data-transform_out="o:0"
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['center', 'center', 'center', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+                                ><h4>Get best medical service</h4>
+                            </div>
+
+                            <!-- LAYER NR. 2 -->
+                            <div class="tp-caption slide-text"
+                                 data-x="['center', 'center', 'center', 'center']"
+                                 data-fontsize="['58', '58', '40', '30']"
+                                 data-hoffset="35"
+                                 data-y="center" data-voffset="-20"
+                                 data-transform_idle="o:1;"         
+                                 data-transform_in="o:0" 
+                                 data-transform_out="o:0"                            
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['inherit', 'inherit', 'right', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+                                ><h2>Life Wellness<span class="color-defult"> Programs</span></h2> 
+                            </div>
+
+                            <!-- LAYER NR. 3 -->
+                            <div class="tp-caption slide-text"
+                                 data-x="['center', 'center', 'center', 'center']"
+                                 data-hoffset="35"
+                                 data-y="center" data-voffset="70"
+                                 data-transform_idle="o:1;"         
+                                 data-transform_in="o:0" 
+                                 data-transform_out="o:0"                            
+                                 data-start="500"
+                                 data-visibility="['on', 'on', 'on', 'on']"
+                                 data-textAlign="['center', 'center', 'center', 'center']"
+                                 data-width="['800', '800', '600', '400']"
+                                 data-height="['auto', 'auto', 'auto', 'auto']"
+                                ><a class="btn btn-default" href="#">check our services</a>
+                            </div>
+                            
+                        </li>
+                    </ul>               
+                </div><!-- END REVOLUTION SLIDER -->
+            </div><!-- END REVOLUTION SLIDER WRAPPER -->
+        </section>
+        <!-- Slider End -->
+
+        <!-- About Feature Section Start -->
+        <section class="about-section about-top">
+            <div class="container">
+                <div class="row about-feature" style="
+                background-color: white;
+            ">
+                    <div class="col-md-4 p-05">
+                        <div class="appointment-item">
+                            <h4>Our <span>Doctors</span></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eum, ducimus. Nesciunt.</p>
+                            <i class="fa fa-clock-o icons"></i>
+                            <a class="btn btn-theme" href="{% url 'adddoctor' %}">Add Doctor</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-05">
+                        <div class="appointment-item">
+                            <h4>OUR <span>DEPARTMENTS</span></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse, eum, ducimus. Nesciunt.</p>
+                            <i class="fa fa-clock-o icons"></i>
+                            <a class="btn btn-theme" href="{% url 'adddept' %}">Add Department</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-05">
+                        <div class="appointment-item">
+                            <h4>Opening <span>Hours</span></h4>
+                            <ul class="opening-time">
+                                <li>sunday - Monday<span>8.30am</span></li>
+                                <li>friday - Sunday<span>9.30pm</span></li>
+                            </ul>
+                            <i class="fa fa-clock-o icons"></i>
+                            <a class="btn btn-theme" href="{% url 'addpatient' %}">Add Patient</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- About Feature Section End -->
+
+        <!-- Service Section Start -->
+        <section class="services-section pt-100 pb-70">
+            <div class="container">
+                 <div class="row pb-70">
+                    <div class="section-title style-2">
+                        <div class="col-md-12 text-center">
+                            <h2>Our <span>Services</span></h2>
+                            <div class="section-title-icon"></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit vitae, veritatis voluptas illum at unde cum. Volupta.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="section-content section-content-2">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/1.jpg' %}" alt="">
+                                    <div class="hover-box">
+                                        <p>Consectetur adipisicing elit. Saepe vel, maxime consectetur sit odit.</p>
+                                        <a href="#">Details</a>
+                                    </div>
+                                </div>
+                                <div class="title-box">
+                                    <h4>Heart Transplants</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-brain-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content section-content-2">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/2.jpg' %}" alt="">
+                                    <div class="hover-box">
+                                        <p>Consectetur adipisicing elit. Saepe vel, maxime consectetur sit odit.</p>
+                                        <a href="#">Details</a>
+                                    </div>
+                                </div>
+                                <div class="title-box">
+                                    <h4>Orthopaedics</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-medical-result"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content section-content-2">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/3.jpg' %}" alt="">
+                                    <div class="hover-box">
+                                        <p>Consectetur adipisicing elit. Saepe vel, maxime consectetur sit odit.</p>
+                                        <a href="#">Details</a>
+                                    </div>
+                                </div>
+                                <div class="title-box">
+                                    <h4>modern lab</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-ambulance"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content section-content-2">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/1.jpg' %}" alt="">
+                                    <div class="hover-box">
+                                        <p>Consectetur adipisicing elit. Saepe vel, maxime consectetur sit odit.</p>
+                                        <a href="#">Details</a>
+                                    </div>
+                                </div>
+                                <div class="title-box">
+                                    <h4>Heart Transplants</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-brain-1"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content section-content-2">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/2.jpg' %}" alt="">
+                                    <div class="hover-box">
+                                        <p>Consectetur adipisicing elit. Saepe vel, maxime consectetur sit odit.</p>
+                                        <a href="#">Details</a>
+                                    </div>
+                                </div>
+                                <div class="title-box">
+                                    <h4>Orthopaedics</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-medical-result"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content section-content-2">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/3.jpg' %}" alt="">
+                                    <div class="hover-box">
+                                        <p>Consectetur adipisicing elit. Saepe vel, maxime consectetur sit odit.</p>
+                                        <a href="#">Details</a>
+                                    </div>
+                                </div>
+                                <div class="title-box">
+                                    <h4>modern lab</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-ambulance"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Service Section End -->
+
+
+        <!-- Portfolio Start -->
+        <section class="gallery-area over-layer-white-deep pt-100 pb-70" data-background="{% static 'images/bg/bg2.jpg' %}" data-type="parallax" data-speed="3">
+            <div class="container">
+                 <div class="row pb-70">
+                    <div class="section-title style-2">
+                        <div class="col-md-12 text-center">
+                            <h2>Our <span>Portfolio</span></h2>
+                            <div class="section-title-icon"></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit vitae, veritatis voluptas illum at unde cum. Volupta.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="gallery col-3">
+                                <div class="gallery-item gp-two">
+                                    <div class="thumb">
+                                        <img src="{% static 'images/portfolio/1.jpg' %}" alt="">
+                                        <div class="gallery-hover">
+                                            <div class="gallery-info">
+                                                <div class="gallery-btn">
+                                                    <a href="{% static 'images/portfolio/1.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i>  </a>
+                                                </div>
+                                                <h4><a href="images/portfolio/1.jpg" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">BEst Medical Service</a></h4>
+                                                <p><a href="#">Sub Title here</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-item gp-four">
+                                    <div class="thumb">
+                                        <img src="{% static 'images/portfolio/3.jpg' %}" alt="">
+                                        <div class="gallery-hover">
+                                            <div class="gallery-info">
+                                                <div class="gallery-btn">
+                                                    <a href="{% static 'images/portfolio/3.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i>  </a>
+                                                </div>
+                                                <h4><a href="{% static 'images/portfolio/3.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">BEst Medical Service</a></h4>
+                                                <p><a href="#">Sub Title here</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-item gp-five">
+                                    <div class="thumb">
+                                        <img src="{% static 'images/portfolio/4.jpg' %}" alt="">
+                                        <div class="gallery-hover">
+                                            <div class="gallery-info">
+                                                <div class="gallery-btn">
+                                                    <a href="{% static 'images/portfolio/4.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i>  </a>
+                                                </div>
+                                                <h4><a href="{% static 'images/portfolio/4.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">BEst Medical Service</a></h4>
+                                                <p><a href="#">Sub Title here</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-item gp-two">
+                                    <div class="thumb">
+                                        <img src="{% static 'images/portfolio/5.jpg' %}" alt="">
+                                        <div class="gallery-hover">
+                                            <div class="gallery-info">
+                                                <div class="gallery-btn">
+                                                    <a href="{% static 'images/portfolio/5.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i>  </a>
+                                                </div>
+                                                <h4><a href="{% static 'images/portfolio/5.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">BEst Medical Service</a></h4>
+                                                <p><a href="#">Sub Title here</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-item gp-three">
+                                    <div class="thumb">
+                                        <img src="{% static 'images/portfolio/6.jpg' %}" alt="">
+                                        <div class="gallery-hover">
+                                            <div class="gallery-info">
+                                                <div class="gallery-btn">
+                                                    <a href="{% static 'images/portfolio/6.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i>  </a>
+                                                </div>
+                                                <h4><a href="{% static 'images/portfolio/6.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">BEst Medical Service</a></h4>
+                                                <p><a href="#">Sub Title here</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gallery-item gp-four">
+                                    <div class="thumb">
+                                        <img src="{% static 'images/portfolio/7.jpg' %}" alt="">
+                                        <div class="gallery-hover">
+                                            <div class="gallery-info">
+                                                <div class="gallery-btn">
+                                                    <a href="{% static 'images/portfolio/7.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view"> <i class="pe-7s-graph2"></i>  </a>
+                                                </div>
+                                                <h4><a href="{% static 'images/portfolio/7.jpg' %}" data-fancybox-group="gallery" class="lightbox-image" title="lightbox view">BEst Medical Service</a></h4>
+                                                <p><a href="#">Sub Title here</a></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- portfolio End -->
+
+        <!-- Services Section Start -->
+        <section class="services-section pt-100 pb-70">
+            <div class="container">
+                 <div class="row pb-70">
+                    <div class="section-title style-2">
+                        <div class="col-md-12 text-center">
+                            <h2>Our <span>Departments</span></h2>
+                            <div class="section-title-icon"></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit vitae, veritatis voluptas illum at unde cum. Volupta.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="section-content">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/1.jpg' %}" alt="">
+                                </div>
+                                <div class="title-box">
+                                    <h4>Heart Transplants</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-brain-1"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p>Consectetur adipisicing elit. Voluptatem, magni autem. Eum voluptate aliquam consequatur iusto accusamus.</p>
+                                    <a class="link-btn" href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/2.jpg' %}" alt="">
+                                </div>
+                                <div class="title-box">
+                                    <h4>Orthopaedics</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-medical-result"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p>Consectetur adipisicing elit. Voluptatem, magni autem. Eum voluptate aliquam consequatur iusto accusamus.</p>
+                                    <a class="link-btn" href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/3.jpg' %}" alt="">
+                                </div>
+                                <div class="title-box">
+                                    <h4>modern lab</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-ambulance"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p>Consectetur adipisicing elit. Voluptatem, magni autem. Eum voluptate aliquam consequatur iusto accusamus.</p>
+                                    <a class="link-btn" href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/1.jpg' %}" alt="">
+                                </div>
+                                <div class="title-box">
+                                    <h4>Heart Transplants</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-brain-1"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p>Consectetur adipisicing elit. Voluptatem, magni autem. Eum voluptate aliquam consequatur iusto accusamus.</p>
+                                    <a class="link-btn" href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/2.jpg' %}"alt="">
+                                </div>
+                                <div class="title-box">
+                                    <h4>Orthopaedics</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-medical-result"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p>Consectetur adipisicing elit. Voluptatem, magni autem. Eum voluptate aliquam consequatur iusto accusamus.</p>
+                                    <a class="link-btn" href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="section-content">
+                            <div class="service-item style-2">
+                                <div class="thumb">
+                                    <img src="{% static 'images/service/3.jpg' %}" alt="">
+                                </div>
+                                <div class="title-box">
+                                    <h4>modern lab</h4>
+                                    <h5>Cardiologists</h5>
+                                    <div class="service-icon">
+                                        <i class="flaticon-ambulance"></i>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <p>Consectetur adipisicing elit. Voluptatem, magni autem. Eum voluptate aliquam consequatur iusto accusamus.</p>
+                                    <a class="link-btn" href="#">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Services Section End -->
+
+        <!-- Health Tips Section Start -->
+        <div class="health-tips">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="health-tips-1">
+                            <h4 class="heading">What you must do</h4>
+                            <ul class="tips">
+                                <li>
+                                    <span class="count">#1</span>
+                                    <p>Brush your teeth twice per day, and remember to floss at least once per day.</p>
+                                </li>
+                                <li>
+                                    <span class="count">#2</span>
+                                    <p>See a dental hygeinist for a check-up, cleaning &amp; maintenance every 6 months</p>
+                                </li>
+                                <li>
+                                    <span class="count">#3</span>
+                                    <p>Switch your toothbrush when the bristles appear worn out or every 3 months.</p>
+                                </li>
+                                <li>
+                                    <span class="count">#4</span>
+                                    <p>Use flouride mouthwas to help strengthen enamel and freshen your breath.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="health-tips-2">
+                            <h4 class="heading">What you must not</h4>
+                            <ul class="tips">
+                                <li>
+                                    <span class="count">#1</span>
+                                    <p>Avoid smoking or use tobacco in any form. It leads to more than oral problems.</p>
+                                </li>
+                                <li>
+                                    <span class="count">#2</span>
+                                    <p>Never brush aggresively or violently, as it can irritate delicate gum tissues.</p>
+                                </li>
+                                <li>
+                                    <span class="count">#3</span>
+                                    <p>Do not brush your teeth in shower. This ontroduces bacteria to toothbrush.</p>
+                                </li>
+                                <li>
+                                    <span class="count">#4</span>
+                                    <p>Do not forget to drink water to rinse away sugars after eating sweets &amp; acidic food.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Health Tips Section End -->
+
+        <!-- Strat Hafe Divider Left Section Style One -->
+        <section class="animatedParent animateOnce pt-100 pb-70">
+            <div class="container">
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-7 animated fadeInLeftShort slow delay-250 go">
+                            <div class="divider-content why-choose">
+                                <h6>Our Stories</h6>
+                                <h3>Our Patients<span> Stories</span></h3>
+                                <div class="border-style-2 mb-50"></div>
+                            </div>
+                            <div class="client-stories">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="stories-item">
+                                            <div class="thumb-content">
+                                                <img src="{% static 'images/service/s1.jpg' %}" alt="image">
+                                                <div class="thumb-overlay"><i class="fa fa-play-circle-o"></i></div>
+                                            </div>
+                                            <div class="content">
+                                                <h3>Our Patients Story</h3>
+                                                <p>Consectetur adipisicing elit. Quae aliquid ex enim eveniet minima.</p>
+                                                <a class="btn btn-theme" href="#">View all</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="stories-item">
+                                            <div class="content align-top">
+                                                <h3>Our Patients Story</h3>
+                                                <p>Health Sheba esse ipsum modern oditu porro dolores. Vel excepturi beatae.</p>
+                                                <p class="theme-color">Modern Health Sheba Department</p>
+                                            </div>
+                                            <div class="thumb-content">
+                                                <img src="{% static 'images/service/s2.jpg' %}" alt="image">
+                                                <div class="thumb-overlay"><i class="fa fa-play-circle-o"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5 padding-tb animated fadeInRightShort slow delay-250 go">
+                            <div class="booking-from bg-f8">
+                                <h6>Appoint now</h6>
+                                <h3>Make An <span class="color-defult">Appointment</span></h3>
+                                <div class="border-style-2"></div>
+                                <form method="post" id="appoint-form" action="#">
+                                    <div class="col-md-6">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" name="email" class="form-control" placeholder="Your Email Here" id="email" required="">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select class="form-control" id="doctorName" name="doctorName" required="">
+                                            <option value="auto">Choose Department</option>
+                                            <option value="Heart Transplants" selected="">Heart Transplants</option>
+                                            <option value="Orthopaedics">Orthopaedics</option>
+                                            <option value="Modern lab">Modern lab</option>
+                                            <option value="Heart Transplants">Heart Transplants</option>
+                                            <option value="Orthopaedics">Orthopaedics</option>
+                                            <option value="Modern lab">Modern lab</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group date margin-bottom-30" data-date-format="dd.mm.yyyy">
+                                            <input type="text" class="form-control" placeholder="Reservation Date" name="rDate" id="rDate">
+                                            <div class="input-group-addon">
+                                                <span class="glyphicon glyphicon-th"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="contact-textarea">
+                                            <textarea class="form-control" rows="6" placeholder="Wright Message" id="message" name="message" required=""></textarea>
+                                            <button class="btn btn-theme" type="submit" value="Submit Form">Send Message</button>
+                                        </div>
+                                    </div>
+                                    <div id="form-messages"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strat Hafe Divider Left Section Style One -->
+
+
+
+        <!-- Team Start -->
+        <section class="team-section pt-70 pb-70">
+            <div class="container">
+                 <div class="row pb-70">
+                    <div class="section-title style-2">
+                        <div class="col-md-12 text-center">
+                            <h2>Expert <span>Doctor</span></h2>
+                            <div class="section-title-icon"></div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit vitae, veritatis voluptas illum at unde cum. Volupta.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="team-single-col-two">
+                                <figure class="advisors-box">
+                                    <img alt="Image" src="{% static 'images/team/1.jpg' %}" class="img-responsive">
+                                    <div class="overly">
+                                        <div class="item-overly">
+                                            <ul class="member-description list-inline">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitch"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <figcaption>
+                                        <div class="member-details text-left">
+                                            <h5>
+                                                <a href="#">John Doe</a>
+                                                <span>Cardiologists</span>
+                                            </h5>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="team-single-col-two">
+                                <figure class="advisors-box">
+                                    <img alt="Image" src="{% static 'images/team/2.jpg' %}" class="img-responsive">
+                                    <div class="overly">
+                                        <div class="item-overly">
+                                            <ul class="member-description list-inline">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitch"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <figcaption>
+                                        <div class="member-details text-left">
+                                            <h5>
+                                                <a href="#">John Doe</a>
+                                                <span>Cardiologists</span>
+                                            </h5>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="team-single-col-two">
+                                <figure class="advisors-box">
+                                    <img alt="Image" src="{% static 'images/team/3.jpg' %}" class="img-responsive">
+                                    <div class="overly">
+                                        <div class="item-overly">
+                                            <ul class="member-description list-inline">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitch"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <figcaption>
+                                        <div class="member-details text-left">
+                                            <h5>
+                                                <a href="#">John Doe</a>
+                                                <span>Cardiologists</span>
+                                            </h5>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="team-single-col-two">
+                                <figure class="advisors-box">
+                                    <img alt="Image" src="{% static 'images/team/4.jpg' %}" class="img-responsive">
+                                    <div class="overly">
+                                        <div class="item-overly">
+                                            <ul class="member-description list-inline">
+                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-twitch"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <figcaption>
+                                        <div class="member-details text-left">
+                                            <h5>
+                                                <a href="#">John Doe</a>
+                                                <span>Cardiologists</span>
+                                            </h5>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Team End -->
+
+
+ 
+
+
+{% endblock %}
+
+

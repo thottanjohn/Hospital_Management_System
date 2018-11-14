@@ -1,0 +1,8 @@
+<div>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    {{patient_form.as_p}}
+    {{admitted_form.as_p}}
+    <input type="submit" value="Submit">
+    </form>
+</div>

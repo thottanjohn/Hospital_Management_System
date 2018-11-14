@@ -24,6 +24,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.home,name="home"),
     url(r'^adddept/$',views.adddept,name="adddept"),
+    url(r'^addpatient/$',views.addpatient,name="addpatient"),
+    url(r'^adddoctor/$',views.adddoctor,name="adddoctor"),
+    url(r'^Doctors/$',views.displaydoctors,name="doctors"),
+    url(r'^department/(?P<dept_id>[\w\-]+)$', views.displaydept, name='departmentdetail'),
+    url(r'^doctors/(?P<doc_id>[\w\-]+)$', views.docprofile, name='docdetail'),
     ]
 """ 
     url(r'^about/$',views.about,name="about"),  

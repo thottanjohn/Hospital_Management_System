@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+    
+    {% load static %}
+
+    {% block content %}
+        <!-- Banner Section End -->
+
+        <!-- Section Section Start -->
+        <section class="services-section pt-70 pb-70">
+            <div class="container">
+                <div class="row">
+                    {% for i in doctors %}
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="team-single-col-two">
+                                <figure class="advisors-box">
+                                <img alt="Image" src="{% static 'images/team/1.jpg' %}" class="img-responsive">
+                                <figcaption>
+                                <div class="member-details text-left">
+                                        <h5>
+                                            <a href="{% url 'docdetail' i.employee_id  %}">{{i.name}}</a><br>
+                                            <span>Department :{{i.department_name}}</span><br>
+                                            <span>Contact:{{i.contact_number}}</span><br>
+                                        </h5>
+                                    </div>
+                                </figcaption>
+                                </figure>
+                                
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <!-- Section Section End -->
+        {% endblock %}
+
+        <!--
+             <figure class="advisors-box">
+                                <img alt="Image" src="images/team/1.jpg" class="img-responsive">
+                                <div class="overly">
+                                    <div class="item-overly">
+                                        <ul class="member-description list-inline">
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitch"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                    <div class="member-details text-left">
+                                        <h5>
+                                            <a href="#">John Doe</a>
+                                            <span>Finance Advisor</span>
+                                        </h5>
+                                    </div>
+                                </figcaption>
+                            </figure>
+        -->
