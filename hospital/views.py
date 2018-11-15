@@ -8,7 +8,7 @@ from django.conf import settings
 from django.shortcuts import render,redirect,render_to_response
 #from .models import Picto,userlike,Profile
 from .models import Department,Patient,Nurses,WorksFor,Doctors,Emergency,Admitted
-from .forms import DoctorForm,DepartmentForm,PatientForm,WorksforForm,NursesForm,AdmittedForm,EmergencyForm
+from .forms import DoctorForm,DepartmentForm,PatientForm,WorksforForm,NurseForm,AdmittedForm,EmergencyForm
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -59,7 +59,28 @@ def adddept(request):
     cursor.close() 
     return render(request,'addepartment.html',{'dept_form': dept_form,'departments':dept_dict})
 
-
+def addnurse(request):
+    if request.method == 'POST':
+        nurse_form = NurseForm(request.POST)
+        cursor = connection.cursor()
+        if nurse_form.is_valid():
+                    #print >>sys.stderr, type(int(request.POST['nurse_id']))
+                    nurse_id = nurse_form.cleaned_data['nurse_id']
+                    #print >>sys.stderr,type(nurse_id)
+                    name = nurse_form.cleaned_data['name']
+                    address=nurse_form.cleaned_data['address']
+                    add_nurse = ("INSERT INTO Nurses  VALUES (%s, %s, %s)")
+                    data_nurse = (nurse_id,name,address)
+                    cursor.execute(add_nurse, data_nurse)
+                    cursor.close()
+                    return redirect('home')
+    else:
+        nurse_form = NurseForm()
+    cursor = connection.cursor()
+    cursor.execute("Select nurse_id,name,address from Nurses ");
+    nurse_dict=dictfetchall(cursor)
+    cursor.close() 
+    return render(request,'addnurse.html',{'nurse_form': nurse_form,'nurse':nurse_dict})
 
 def addpatient(request):
     if request.method == 'POST':

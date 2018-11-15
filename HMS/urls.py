@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',views.home,name="home"),
     url(r'^adddept/$',views.adddept,name="adddept"),
+    url(r'^addnurse/$',views.addnurse,name="addnurse"),
     url(r'^addpatient/$',views.addpatient,name="addpatient"),
     url(r'^adddoctor/$',views.adddoctor,name="adddoctor"),
     url(r'^Doctors/$',views.displaydoctors,name="doctors"),
