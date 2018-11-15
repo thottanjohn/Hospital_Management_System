@@ -33,6 +33,7 @@ def home(request):
     cursor = connection.cursor()
     cursor.execute("Select department_num,department_name from Department ");
     dept_dict=dictfetchall(cursor)
+    print >>sys.stderr,(dept_dict)
     cursor.close()
     return render(request,'index.html',{'departments':dept_dict})
 def adddept(request):
