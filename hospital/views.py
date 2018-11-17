@@ -159,6 +159,15 @@ def displaydoctors(request):
     cursor.close()
     return render(request,'doctors.html',{'doctors':doctors,'departments':dept_dict})
 
+def displaynurses(request):
+    cursor = connection.cursor()
+    cursor.execute("Select * from  Nurses NATURAL JOIN Works_For  NATURAL JOIN Department ");
+    nurses=dictfetchall(cursor)
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor)    
+    cursor.close()
+    return render(request,'nurses.html',{'nurses':nurses,'departments':dept_dict})
+
 def docprofile(request,doc_id):
     cursor = connection.cursor()
     cursor.execute("Select * from  Doctors NATURAL JOIN Works_For  NATURAL JOIN Department where employee_id =%s",doc_id);
@@ -168,6 +177,16 @@ def docprofile(request,doc_id):
     print >>sys.stderr,doc_profile
     cursor.close()
     return render(request,'docdetail.html',{'doc_profile':doc_profile,'departments':dept_dict})
+
+def nurseprofile(request,nurse_id):
+    cursor = connection.cursor()
+    cursor.execute("Select * from  Nurses NATURAL JOIN Works_For  NATURAL JOIN Department where employee_id =%s",nurse_id);
+    nurse_profile=dictfetchall(cursor)
+    cursor.execute("Select department_num,department_name from Department ");
+    dept_dict=dictfetchall(cursor)
+    print >>sys.stderr,nurse_profile
+    cursor.close()
+    return render(request,'nursedetail.html',{'nurse_profile':nurse_profile,'departments':dept_dict})
 
 
 def displaydept(request,dept_id):

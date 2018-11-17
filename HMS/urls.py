@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^addpatient/$',views.addpatient,name="addpatient"),
     url(r'^adddoctor/$',views.adddoctor,name="adddoctor"),
     url(r'^Doctors/$',views.displaydoctors,name="doctors"),
+    url(r'^Nurses/$',views.displaynurses,name="nurses"),
     url(r'^department/(?P<dept_id>[\w\-]+)$', views.displaydept, name='departmentdetail'),
     url(r'^doctors/(?P<doc_id>[\w\-]+)$', views.docprofile, name='docdetail'),
     ]
