@@ -69,15 +69,16 @@ def addnurse(request):
                     #print >>sys.stderr,type(nurse_id)
                     name = nurse_form.cleaned_data['name']
                     address=nurse_form.cleaned_data['address']
-                    add_nurse = ("INSERT INTO Nurses  VALUES (%s, %s, %s)")
-                    data_nurse = (nurse_id,name,address)
+                    department_num=nurse_form.cleaned_data['department_num']
+                    add_nurse = ("INSERT INTO Nurses  VALUES (%s, %s, %s, %s)")
+                    data_nurse = (nurse_id,name,address,department_num)
                     cursor.execute(add_nurse, data_nurse)
                     cursor.close()
                     return redirect('home')
     else:
         nurse_form = NurseForm()
     cursor = connection.cursor()
-    cursor.execute("Select nurse_id,name,address from Nurses ");
+    cursor.execute("Select nurse_id,name,address,department_num from Nurses ");
     nurse_dict=dictfetchall(cursor)
     cursor.close() 
     return render(request,'addnurse.html',{'nurse_form': nurse_form,'nurse':nurse_dict})
@@ -161,7 +162,7 @@ def displaydoctors(request):
 
 def displaynurses(request):
     cursor = connection.cursor()
-    cursor.execute("Select * from  Nurses NATURAL JOIN Works_For  NATURAL JOIN Department ");
+    cursor.execute("Select * from  Nurses NATURAL JOIN Department ");
     nurses=dictfetchall(cursor)
     cursor.execute("Select department_num,department_name from Department ");
     dept_dict=dictfetchall(cursor)    

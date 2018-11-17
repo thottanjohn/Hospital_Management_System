@@ -34,7 +34,7 @@ class WorksforForm(forms.ModelForm):
 class NurseForm(forms.ModelForm):
     class Meta:
         model = Nurses
-        fields = ('nurse_id', 'name', 'address')
+        fields = ('nurse_id', 'name', 'address','department_num')
 
 class EmergencyForm(forms.ModelForm):
     class Meta:
