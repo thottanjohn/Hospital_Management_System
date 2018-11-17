@@ -73,9 +73,12 @@ class Nurses(models.Model):
     nurse_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=100, blank=True, null=True)
-
+    department_num = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
+        
     class Meta:
         db_table = 'nurses'
+        unique_together = (('department_num', 'nurse_id'),)
+
     def __str__(self):
         return " %s" % self.nurse_id
     def __unicode__(self):
