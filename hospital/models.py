@@ -38,6 +38,7 @@ class Department(models.Model):
     department_num = models.IntegerField(primary_key=True)
     department_name = models.CharField(max_length=20)
     total_worker_count=models.IntegerField(blank=True, null=True)
+    total_patient_count=models.IntegerField(blank=True, null=True)
     floor=models.IntegerField(blank=True, null=True)
 
     class Meta:

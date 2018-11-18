@@ -31,7 +31,7 @@ def dictfetchall(cursor):
 def home(request):
     #title="welcome %s"%request.user
     cursor = connection.cursor()
-    cursor.execute("Select department_num,department_name from Department ");
+    cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor)
     print >>sys.stderr,(dept_dict)
     cursor.close()
@@ -46,15 +46,15 @@ def adddept(request):
                     #print >>sys.stderr,type(dept_num)
                     department_name = dept_form.cleaned_data['department_name']
                     floor=dept_form.cleaned_data['floor']
-                    add_dept = ("INSERT INTO Department  VALUES (%s, %s, %s, %s)")
-                    data_dept = (dept_num,department_name,"0",floor)
+                    add_dept = ("INSERT INTO department  VALUES (%s, %s, %s, %s,%s)")
+                    data_dept = (dept_num,department_name,"0",floor,"0")
                     cursor.execute(add_dept, data_dept)
                     cursor.close()
                     return redirect('home')
     else:
         dept_form = DepartmentForm()
     cursor = connection.cursor()
-    cursor.execute("Select department_num,department_name from Department ");
+    cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor)
     cursor.close() 
     return render(request,'addepartment.html',{'dept_form': dept_form,'departments':dept_dict})
@@ -70,15 +70,24 @@ def addnurse(request):
                     name = nurse_form.cleaned_data['name']
                     address=nurse_form.cleaned_data['address']
                     department_num=nurse_form.cleaned_data['department_num']
-                    add_nurse = ("INSERT INTO Nurses  VALUES (%s, %s, %s, %s)")
+                    add_nurse = ("INSERT INTO nurses  VALUES (%s, %s, %s, %s)")
                     data_nurse = (nurse_id,name,address,department_num)
                     cursor.execute(add_nurse, data_nurse)
+                    cursor.execute("update department set total_worker_count =total_worker_count+1 where department_num=%s",department_num)
+                    department_num=str(department_num.department_num)
+                    cursor.execute("Select total_worker_count from department  where department_num=%s",department_num)
+                    dept_det=dictfetchall(cursor)
+                    #print >>sys.stderr,dept_det[0]["total_worker_count"]
+                    t_count=dept_det[0]["total_worker_count"]+1
+                    t_count =str(t_count)
+                    cursor.execute("update department set total_worker_count=%s where department_num=%s",(t_count,department_num))
+                                        
                     cursor.close()
                     return redirect('home')
     else:
         nurse_form = NurseForm()
     cursor = connection.cursor()
-    cursor.execute("Select nurse_id,name,address,department_num from Nurses ");
+    cursor.execute("Select nurse_id,name,address,department_num from nurses ");
     nurse_dict=dictfetchall(cursor)
     cursor.close() 
     return render(request,'addnurse.html',{'nurse_form': nurse_form,'nurse':nurse_dict})
@@ -95,7 +104,7 @@ def addpatient(request):
                     patient_name = patient_form.cleaned_data['patient_name']
                     dt_birth = patient_form.cleaned_data['dt_birth']
                     patient_address = patient_form.cleaned_data['patient_address']
-                    add_patient = ("INSERT INTO Patient  VALUES (%s, %s, %s, %s)")
+                    add_patient = ("INSERT INTO patient  VALUES (%s, %s, %s, %s)")
                     data_patient = (patient_id,patient_name,dt_birth,patient_address)
                     cursor.execute(add_patient, data_patient)
                     patient_id = patient_form.cleaned_data['patient_id']
@@ -105,16 +114,24 @@ def addpatient(request):
                     doctor = admitted_form.cleaned_data['doctor']
                     prescription = admitted_form.cleaned_data['prescription']
                     doctorgrade = admitted_form.cleaned_data['doctor_grade']
-                    add_admission = ("INSERT INTO Admitted(patient_id,department_num , date_admission , date_discharge  ,doctor_id, prescription , doctor_grade)  VALUES (%s,%s,%s, %s, %s,  %s, %s)")
+                    add_admission = ("INSERT INTO admitted(patient_id,department_num , date_admission , date_discharge  ,doctor_id, prescription , doctor_grade)  VALUES (%s,%s,%s, %s, %s,  %s, %s)")
                     data_admission = (patient_id,department_num, date_admission , date_discharge ,doctor , prescription , doctorgrade)
                     cursor.execute(add_admission, data_admission)
+                    department_num=str(department_num.department_num)
+                    cursor.execute("Select total_patient_count from department  where department_num=%s",department_num)
+                    dept_det=dictfetchall(cursor)
+                    #print >>sys.stderr,dept_det
+                    t_count=dept_det[0]["total_patient_count"]+1
+                    t_count =str(t_count)
+                    cursor.execute("update department set total_patient_count=%s where department_num=%s",(t_count,department_num))
+                     
                     cursor.close()
                     return redirect('home')
     else:
         patient_form = PatientForm()
         admitted_form = AdmittedForm()
     cursor = connection.cursor()
-    cursor.execute("Select department_num,department_name from Department ");
+    cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor)
     cursor.close() 
     return render(request,'addpatient.html',{'patient_form': patient_form,'admitted_form':admitted_form,'departments':dept_dict})
@@ -132,58 +149,67 @@ def adddoctor(request):
                     contact_no = doctor_form.cleaned_data['contact_number']
                     grade = doctor_form.cleaned_data['grade']
                     address = doctor_form.cleaned_data['address']
-                    add_doctor = ("INSERT INTO Doctors  VALUES (%s, %s, %s, %s,%s)")
+                    add_doctor = ("INSERT INTO doctors  VALUES (%s, %s, %s, %s,%s)")
                     data_doctor = (doctor_id,doctor_name,address,contact_no,grade)
                     cursor.execute(add_doctor,data_doctor)
                     department_num = work_for_form.cleaned_data['department_num']
                     schedule = work_for_form.cleaned_data['schedule']
-                    add_workfor = ("INSERT INTO Works_For (employee_id,department_num,schedule)  VALUES (%s,%s,%s)")
+                    add_workfor = ("INSERT INTO works_for (employee_id,department_num,schedule)  VALUES (%s,%s,%s)")
                     data_workfor = (doctor_id,department_num,schedule)
                     cursor.execute(add_workfor, data_workfor)
+                    department_num=str(department_num.department_num)
+                    #print >>sys.stderr,department_num.department_num
+                    cursor.execute("Select total_worker_count from department  where department_num=%s",department_num)
+                    
+                    dept_det=dictfetchall(cursor)
+                    print >>sys.stderr,dept_det[0]["total_worker_count"]
+                    t_count=dept_det[0]["total_worker_count"]+1
+                    t_count =str(t_count)
+                    cursor.execute("update department set total_worker_count=%s where department_num=%s",(t_count,department_num))
                     cursor.close()
                     return redirect('home')
     else:
         doctor_form = DoctorForm()
         work_for_form = WorksforForm()
     cursor = connection.cursor()
-    cursor.execute("Select department_num,department_name from Department ");
+    cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor) 
     cursor.close() 
     return render(request,'adddoctor.html',{'doctor_form': doctor_form,'work_for_form':work_for_form,'departments':dept_dict})
 
 def displaydoctors(request):
     cursor = connection.cursor()
-    cursor.execute("Select * from  Doctors NATURAL JOIN Works_For  NATURAL JOIN Department ");
+    cursor.execute("Select * from  doctors NATURAL JOIN works_for  NATURAL JOIN department ");
     doctors=dictfetchall(cursor)
-    cursor.execute("Select department_num,department_name from Department ");
+    cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor)    
     cursor.close()
     return render(request,'doctors.html',{'doctors':doctors,'departments':dept_dict})
 
 def displaynurses(request):
     cursor = connection.cursor()
-    cursor.execute("Select * from  Nurses NATURAL JOIN Department ");
+    cursor.execute("Select * from  nurses NATURAL JOIN department ");
     nurses=dictfetchall(cursor)
-    cursor.execute("Select department_num,department_name from Department ");
+    cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor)    
     cursor.close()
     return render(request,'nurses.html',{'nurses':nurses,'departments':dept_dict})
 
 def docprofile(request,doc_id):
     cursor = connection.cursor()
-    cursor.execute("Select * from  Doctors NATURAL JOIN Works_For  NATURAL JOIN Department where employee_id =%s",doc_id);
+    cursor.execute("Select * from  doctors NATURAL JOIN works_for  NATURAL JOIN department where employee_id =%s",doc_id);
     doc_profile=dictfetchall(cursor)
     cursor.execute("Select department_num,department_name from Department ");
     dept_dict=dictfetchall(cursor)
-    print >>sys.stderr,doc_profile
+    #print >>sys.stderr,doc_profile
     cursor.close()
     return render(request,'docdetail.html',{'doc_profile':doc_profile,'departments':dept_dict})
 
 def nurseprofile(request,nurse_id):
     cursor = connection.cursor()
-    cursor.execute("Select * from  Nurses NATURAL JOIN Works_For  NATURAL JOIN Department where employee_id =%s",nurse_id);
+    cursor.execute("Select * from  nurses NATURAL JOIN works_For  NATURAL JOIN department where employee_id =%s",nurse_id);
     nurse_profile=dictfetchall(cursor)
-    cursor.execute("Select department_num,department_name from Department ");
+    cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor)
     print >>sys.stderr,nurse_profile
     cursor.close()
@@ -192,14 +218,14 @@ def nurseprofile(request,nurse_id):
 
 def displaydept(request,dept_id):
     cursor = connection.cursor()
-    cursor.execute("Select department_num,department_name from Department ");
+    cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor)
-    cursor.execute("Select * from Department  where department_num=%s",dept_id);
+    cursor.execute("Select * from department  where department_num=%s",dept_id);
     dept=dictfetchall(cursor)
-    cursor.execute("Select * from  Doctors NATURAL JOIN Works_For  NATURAL JOIN Department where department_num=%s",dept_id);
+    cursor.execute("Select * from  doctors NATURAL JOIN works_for  NATURAL JOIN department where department_num=%s",dept_id);
     doc_dict=dictfetchall(cursor)
 
-    cursor.execute("Select * from  Patient NATURAL JOIN Admitted  NATURAL JOIN Department where department_num=%s",dept_id);
+    cursor.execute("Select * from  patient NATURAL JOIN admitted  NATURAL JOIN department where department_num=%s",dept_id);
     patients=dictfetchall(cursor)
     cursor.close()
     return render(request,'department-1.html',{'doc_dict':doc_dict,'patients':patients,'departments':dept_dict,'dept':dept})
