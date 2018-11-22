@@ -24,7 +24,7 @@ class PatientForm(forms.ModelForm):
 class AdmittedForm(forms.ModelForm):
     class Meta:
         model =Admitted
-        fields = ('department_num', 'date_admission','date_discharge','doctor','prescription','doctor_grade')
+        fields = ('department_num', 'date_admission','date_discharge','doctor','prescription')
 
 class WorksforForm(forms.ModelForm):
     class Meta:

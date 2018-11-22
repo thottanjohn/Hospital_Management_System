@@ -19,9 +19,9 @@ class Doctors(models.Model):
     class Meta:
         db_table = 'doctors'
     def __str__(self):
-        return " %s" % self.employee_id
+        return " %s" % self.name
     def __unicode__(self):
-        return u" %s" % self.employee_id
+        return u" %s" % self.name
 class Patient(models.Model):
     patient_id = models.IntegerField(primary_key=True)
     patient_name = models.CharField(max_length=50)
@@ -44,9 +44,9 @@ class Department(models.Model):
     class Meta:
         db_table = 'department'
     def __str__(self):
-        return " %s" % self.department_num
+        return " %s" % self.department_name
     def __unicode__(self):
-        return u" %s" % self.department_num
+        return u" %s" % self.department_name
 
 class WorksFor(models.Model):
     department_num = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
@@ -64,7 +64,6 @@ class Admitted(models.Model):
     date_discharge = models.DateField(blank=True, null=True)
     doctor = models.ForeignKey(Doctors, models.DO_NOTHING, blank=True, null=True)
     prescription = models.CharField(max_length=50, blank=True, null=True)
-    doctor_grade = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
         db_table = 'admitted'
@@ -81,9 +80,9 @@ class Nurses(models.Model):
         unique_together = (('department_num', 'nurse_id'),)
 
     def __str__(self):
-        return " %s" % self.nurse_id
+        return " %s" % self.name
     def __unicode__(self):
-        return u" %s" % self.nurse_id
+        return u" %s" % self.name
 
 class Emergency(models.Model):
     date = models.DateField(primary_key=True)

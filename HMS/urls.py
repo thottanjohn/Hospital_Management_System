@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^Nurses/$',views.displaynurses,name="nurses"),
     url(r'^department/(?P<dept_id>[\w\-]+)$', views.displaydept, name='departmentdetail'),
     url(r'^doctors/(?P<doc_id>[\w\-]+)$', views.docprofile, name='docdetail'),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
     ]
 """ 
     url(r'^about/$',views.about,name="about"),  
