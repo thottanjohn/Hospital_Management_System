@@ -33,7 +33,7 @@ def home(request):
     cursor = connection.cursor()
     cursor.execute("Select department_num,department_name from department ");
     dept_dict=dictfetchall(cursor)
-    print >>sys.stderr,(dept_dict)
+    #print >>sys.stderr,(dept_dict)
     cursor.close()
     return render(request,'index.html',{'departments':dept_dict})
 
@@ -66,7 +66,9 @@ def addnurse(request):
     if request.method == 'POST':
         nurse_form = NurseForm(request.POST)
         cursor = connection.cursor()
+        print >>sys.stderr, nurse_form.clean_data(nurse_form)
         if nurse_form.is_valid():
+            if(nurse_form.clean_data(nurse_form)):
                     #print >>sys.stderr, type(int(request.POST['nurse_id']))
                     nurse_id = nurse_form.cleaned_data['nurse_id']
                     #print >>sys.stderr,type(nurse_id)
@@ -74,7 +76,7 @@ def addnurse(request):
                     address=nurse_form.cleaned_data['address']
                     department_num=nurse_form.cleaned_data['department_num']
                     add_nurse = ("INSERT INTO nurses  VALUES (%s, %s, %s, %s)")
-                    data_nurse = (nurse_id,name,address,department_num)
+                    data_nurse = (nurse_id,name,address,department_num.department_num)
                     cursor.execute(add_nurse, data_nurse)
                     
                     department_num=str(department_num.department_num)

@@ -1,8 +1,76 @@
-<div>
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-    {{patient_form.as_p}}
-    {{admitted_form.as_p}}
-    <input type="submit" value="Submit">
-    </form>
-</div>
+{% extends "base.html" %}
+    
+
+
+
+{% block content %}
+<style>
+
+.form-title-box{
+    font-size: 20pt;
+
+    font-weight: 300;
+    padding-bottom: 20px;
+}
+</style>
+<!-- Appointment Section Start -->
+<section class="appointment-section pt-70 pb-70">
+        <div class="container">
+            <div class="row welcome-feature">
+                
+                    
+                <div class="col-md-9">
+                    <div class="appointment-form">
+                            <div class="form-title-box">ADMIT PATIENT
+                                </div>
+                        <form action="" method="post" enctype="multipart/form-data">
+                      
+                            {% csrf_token %}
+                    {% for field in patient_form %}
+                    <div class="row">
+                       <div class="col-md-2">    
+                        {{ field.label_tag }}
+                        {% if field.help_text %}
+                          <sup>{{ field.help_text }}</sup>
+                        {% endif %}
+                        {{ field.errors }}
+                       </div><div class="col-md-10 pull-left">
+                         {{ field }}
+                       </div>
+                    </div>
+                 {% endfor %}
+                 {% for field in admitted_form %}
+                 <div class="row">
+                    <div class="col-md-2">    
+                     {{ field.label_tag }}
+                     {% if field.help_text %}
+                       <sup>{{ field.help_text }}</sup>
+                     {% endif %}
+                     {{ field.errors }}
+                    </div><div class="col-md-10 pull-left">
+                      {{ field }}
+                    </div>
+                 </div>
+                {% endfor %}
+                   
+                
+                <input class="btn btn-theme" type="submit" value="Submit">
+                
+                
+                       
+                            
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Appointment Section End -->
+
+    
+
+
+
+{% endblock %}
+
+

@@ -22,6 +22,7 @@ from hospital import views as views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    #url(r'^admin/jsi18n', django.views.i18n.javascript_catalog),
     url(r'^$',views.home,name="home"),
     url(r'^adddept/$',views.adddept,name="adddept"),
     url(r'^addnurse/$',views.addnurse,name="addnurse"),
@@ -29,8 +30,8 @@ urlpatterns = [
     url(r'^adddoctor/$',views.adddoctor,name="adddoctor"),
     url(r'^Doctors/$',views.displaydoctors,name="doctors"),
     url(r'^Nurses/$',views.displaynurses,name="nurses"),
-    url(r'^department/(?P<dept_id>[\w\-]+)$', views.displaydept, name='departmentdetail'),
-    url(r'^doctors/(?P<doc_id>[\w\-]+)$', views.docprofile, name='docdetail'),
+    url(r'^department/(?P<dept_id>[\w\-]*)$', views.displaydept, name='departmentdetail'),
+    url(r'^doctors/(?P<doc_id>[\w\-]*)$', views.docprofile, name='docdetail'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     ]
 """ 
