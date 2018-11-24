@@ -6,31 +6,48 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
 from django.core.exceptions import ValidationError
 from django.core.files import File
+from datetime import datetime, timedelta
 import sys
 class DateInput(forms.DateInput):
     input_type = 'date'
 
 class DoctorForm(forms.ModelForm):
-        class Meta:
+    class Meta:
             model =Doctors
             fields = ('employee_id','name', 'address', 'contact_number','grade')
-        def clean_data(self):
-            employee_id = self.cleaned_data['employee_id']
-            if employee_id<0:
-                return ValidationError('Employee id cannot be negative')
-            return 1
+    def clean(self):
+        cleaned_data = super(DoctorForm, self).clean()
+        employee_id= cleaned_data.get('employee_id')
+        name = cleaned_data.get('name')
+        contact_number = cleaned_data.get('contact_number')
+        print >>sys.stderr,str(contact_number)
+        if employee_id<0:
+            raise forms.ValidationError('employee_id cannot be negative')
+        if not all(x.isalpha() or x.isspace() for x in name):
+            raise forms.ValidationError('Name must contain only letters')
+        if  not contact_number.isdigit():
+            raise forms.ValidationError('Contact no should contain only no.s')
+        if len(contact_number)!=10:
+            raise forms.ValidationError('Contact no must exactly contain 10 digits')
+        
+
 
 
 class DepartmentForm(forms.ModelForm):
     class Meta:
         model = Department
         fields = ('department_num', 'department_name', 'floor')
-    def clean_data(self):
-            employee_id = self.cleaned_data['employee_id']
-            if not first_name.isalpha():
-                return ValidationError('First name must contain only letters')
-            return 1
-
+    def clean(self):
+        cleaned_data = super(DepartmentForm, self).clean()
+        department_num= cleaned_data.get('department_num')
+        department_name = cleaned_data.get('department_name')
+        floor = cleaned_data.get('floor')
+        if department_num<0:
+            raise forms.ValidationError('department no cannot be negative')
+        if not all(x.isalpha() or x.isspace() for x in department_name):
+            raise forms.ValidationError('Department name must contain only letters')            
+        if floor<0:
+            raise forms.ValidationError('Floor no cannot be negative')
 class PatientForm(forms.ModelForm):
     class Meta:
         model = Patient
@@ -38,53 +55,55 @@ class PatientForm(forms.ModelForm):
         widgets = {
             'dt_birth': DateInput()
         }
-    def clean_data(self):
-            employee_id = self.cleaned_data['employee_id']
-            if not employee_id.isalpha():
-                return ValidationError('First name must contain only letters')
-            return 1
+    def clean(self):
+        cleaned_data = super(PatientForm, self).clean()
+        patient_id= cleaned_data.get('patient_id')
+        patient_name = cleaned_data.get('patient_name')
+        if patient_id<0:
+            raise forms.ValidationError('patient_id cannot be negative')
+        if not all(x.isalpha() or x.isspace() for x in patient_name):
+            raise forms.ValidationError('patient_name must contain only letters')  
+
 class AdmittedForm(forms.ModelForm):
     class Meta:
         model =Admitted
-        fields = ('department_num','date_admission','date_discharge','doctor','prescription')
+        fields = ('department','date_admission','date_discharge','doctor','prescription')
         widgets = {
             'date_admission': DateInput(),
             'date_discharge': DateInput()
         }
-    def clean_data(self):
-            employee_id = self.cleaned_data['employee_id']
-            if not  employee_id.isalpha():
-                return ValidationError('First name must contain only letters')
-            return 1
+    def clean(self):
+        cleaned_data = super(AdmittedForm, self).clean()
+        date_admission= cleaned_data.get('date_admission')
+        date_discharge = cleaned_data.get('date_discharge')
+        if date_admission> date_discharge:
+            raise forms.ValidationError('Please choose appropriate date of admission and date of discharge')      
+
 
 class WorksforForm(forms.ModelForm):
     class Meta:
         model = WorksFor
-        fields = ('department_num', 'schedule')
+        fields = ('department', 'schedule')
         widgets = {
             'schedule': DateInput(),
 
         }
-    def clean_data(self):
-            department_num = self.cleaned_data['employee_id']
-            return 1
+
 
 
 class NurseForm(forms.ModelForm):
     class Meta:
         model = Nurses
-        fields = ('nurse_id', 'name', 'address','department_num')
-    def clean_data(self,nurse_form):
-        if nurse_form.is_valid():
-            name =nurse_form.cleaned_data['name']
-            nurse_id = nurse_form.cleaned_data['nurse_id']
-            print >>sys.stderr, nurse_id,name.isalpha()
-            if not name.isalpha():
-                return ValidationError('Name must contain only letters')
-            elif nurse_id<0:
-                return ValidationError('Nurse id cannot be negative')
-            else:
-                return True
+        fields = ('nurse_id', 'name', 'address','department')
+    def clean(self):
+        cleaned_data = super(NurseForm, self).clean()
+        nurse_id= cleaned_data.get('nurse_id')
+        name = cleaned_data.get('name')
+        if nurse_id<0:
+            raise forms.ValidationError('employee_id cannot be negative')
+        if not all(x.isalpha() or x.isspace() for x in name):
+            raise forms.ValidationError('Name must contain only letters')
+ 
 
 class EmergencyForm(forms.ModelForm):
     class Meta:

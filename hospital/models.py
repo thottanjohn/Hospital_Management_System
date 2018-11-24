@@ -49,17 +49,17 @@ class Department(models.Model):
         return u" %s" % self.department_name
 
 class WorksFor(models.Model):
-    department_num = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
+    department = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
     employee = models.ForeignKey(Doctors, models.DO_NOTHING,primary_key=True)
     schedule = models.DateField(blank=True, null=True)
 
     class Meta:
         db_table = 'works_for'
-        unique_together = (('department_num', 'employee'),) 
+        unique_together = (('department', 'employee'),) 
 
 class Admitted(models.Model):
     patient = models.ForeignKey(Patient, models.DO_NOTHING, primary_key=True)
-    department_num = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
+    department = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
     date_admission = models.DateField()
     date_discharge = models.DateField(blank=True, null=True)
     doctor = models.ForeignKey(Doctors, models.DO_NOTHING, blank=True, null=True)
@@ -67,17 +67,17 @@ class Admitted(models.Model):
 
     class Meta:
         db_table = 'admitted'
-        unique_together = (('patient', 'department_num', 'date_admission'),)
+        unique_together = (('patient', 'department', 'date_admission'),)
 
 class Nurses(models.Model):
     nurse_id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=20)
     address = models.CharField(max_length=100, blank=True, null=True)
-    department_num = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
+    department = models.ForeignKey(Department, models.DO_NOTHING, db_column='department_num')
         
     class Meta:
         db_table = 'nurses'
-        unique_together = (('department_num', 'nurse_id'),)
+        unique_together = (('department', 'nurse_id'),)
 
     def __str__(self):
         return " %s" % self.name

@@ -26,6 +26,20 @@
         <form action="" method="post" enctype="multipart/form-data">
                       
             {% csrf_token %}
+            {% if doctor_form.non_field_errors %}
+            <ul>
+              {% for error in doctor_form.non_field_errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {% if work_for_form.non_field_errors %}
+            <ul>
+              {% for error in work_for_form.non_field_errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
     {% for field in doctor_form %}
     <div class="row">
        <div class="col-md-2">    

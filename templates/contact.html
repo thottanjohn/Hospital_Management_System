@@ -1,201 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  
-<!-- Mirrored from heatmaponline.com/html/hseba/v-1.1/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Oct 2018 13:53:53 GMT -->
-<head>
+{% extends "base.html" %}
     
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="description" content="" />
-    <meta name="keywords" content="creative, portfolio, agency, template, theme, designed, html5, html, css3, responsive, onepage" />
-    <meta name="author" content="Set Private Limited" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
 
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Health-Sheba || Health & Medical HTML Template</title>
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Style Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Favicon -->
-    <link href="images/favicon.png" rel="shortcut icon" type="image/png">
-
-  </head>
-
-  <body>
-
-    <div class="preloader"></div>
-
-    <!-- Page-wrapper Start-->
-    <div class="page-wrapper">
-
-        
-    <div class="page-wrapper">
-
-
-        <header class="main-herader">
-            <!-- Header top start -->
-            <div class="top_header">
-                <div class="container p-0">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="header-topbar-col center767">
-                                <ul class="list-inline pull-left address center767">
-                                    <li><i class="fa fa-envelope"></i><a href="#">info@yourmail.com</a></li>
-                                    <li class="display-n-768"><i class="fa fa-map-marker"></i><a href="#">121 Road, Melbourne</a></li>
-                                </ul>
-                                <ul class="socials-icon pull-right center767">
-                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Start Navigation -->
-            <nav id="navbar-main" class="navbar bootsnav on no-full affix-top navbar-default navbar-sticky">
-                <!-- Start Top Search -->
-                <div class="top-search">
-                    <div class="container p-0">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" placeholder="Search" class="form-control">
-                            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Top Search -->
-                <div class="container p-0">
-                    <!-- Start Atribute Navigation -->
-                    <div class="attr-nav">
-                        <ul>
-                            <li class="dropdown chart">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
-                                    <i class="fa fa-shopping-bag"></i>
-                                    <span class="badge">3</span>
-                                </a>
-                                <ul class="dropdown-menu cart-list animated fadeOutDown" style="display: none; opacity: 1;">
-                                    <li>
-                                        <a class="photo" href="#"><img alt="" class="cart-thumb" src="images/shop/c1.jpg"></a>
-                                        <h6><a href="#">Delica omtantur </a></h6>
-                                        <p>2x - <span class="price">$99.99</span></p>
-                                    </li>
-                                    <li>
-                                        <a class="photo" href="#"><img alt="" class="cart-thumb" src="images/shop/c2.jpg"></a>
-                                        <h6><a href="#">Omnes ocurreret</a></h6>
-                                        <p>1x - <span class="price">$33.33</span></p>
-                                    </li>
-                                    <li>
-                                        <a class="photo" href="#"><img alt="" class="cart-thumb" src="images/shop/c3.jpg"></a>
-                                        <h6><a href="#">Agam facilisis</a></h6>
-                                        <p>2x - <span class="price">$99.99</span></p>
-                                    </li>
-                                    <li class="total">
-                                        <span class="pull-right"><strong>Total</strong>: $0.00</span>
-                                        <a class="btn btn-default btn-cart" href="shop-cart.html">Cart</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- End Atribute Navigation -->
-
-                    <!-- Start Header Navigation -->
-                    <div class="navbar-header">
-                        <button data-target="#navbar-menu" data-toggle="collapse" class="navbar-toggle collapsed" type="button" aria-expanded="false">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <a href="index.html" class="navbar-brand"><img alt="" class="logo" src="images/logo-1.png"></a>
-                    </div>
-                    <!-- End Header Navigation -->
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div id="navbar-menu" class="navbar-collapse collapse" aria-expanded="false" role="navigation" style="height: 0px;">
-                        <ul data-out="fadeOutDown" data-in="fadeInUp" class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Home</a>
-                                <ul class="dropdown-menu animated fadeOutDown" style="display: none; opacity: 1;">
-                                    <li class="dropdown">
-                                        <a href="index.html">Home One</a>
-                                        <a href="index-2.html">Home Two</a>
-                                        <a href="index-3.html">Home Three</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">depertment </a>
-                                <ul class="dropdown-menu animated fadeOutDown" style="display: none; opacity: 1;">
-                                    <li class="dropdown">
-                                        <a href="depertment-1.html">Cardilogists Depertment</a>
-                                        <a href="depertment-2.html">Orthopaedics Depertment</a>
-                                        <a href="depertment-3.html">Gastroenterology Depertment</a>
-                                        <a href="depertment-4.html">Neurosciences Depertment</a>
-                                        <a href="depertment-5.html">Spine Depertment</a>
-                                        <a href="depertment-6.html">Cancer Depertment</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Doctors </a>
-                                <ul class="dropdown-menu animated fadeOutDown" style="display: none; opacity: 1;">
-                                    <li class="dropdown">
-                                        <a href="team.html">Doctor style One</a>
-                                        <a href="team-2.html">Doctor style Two</a>
-                                        <a href="team-details.html">Doctor details</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Pages </a>
-                                <ul class="dropdown-menu animated fadeOutDown" style="display: none; opacity: 1;">
-                                    <li class="dropdown">
-                                        <a href="appointment.html">appointment</a>
-                                        <a href="gallery.html">Gallery Style One</a>
-                                        <a href="gallery-2.html">Gallery Style Two</a>
-                                        <a href="about.html">About</a>
-                                        <a href="service.html">service</a>
-                                        <a href="under-construction.html">under-construction</a>
-                                        <a href="shop-grid.html">shop grid</a>
-                                        <a href="shop-list.html">shop list</a>
-                                        <a href="shop-cart.html">shop cart</a>
-                                        <a href="shop-checkout.html">shop Checkout</a>
-                                        <a href="404.html">404</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">Blog </a>
-                                <ul class="dropdown-menu animated fadeOutDown" style="display: none; opacity: 1;">
-                                    <li class="dropdown">
-                                        <a href="blog.html">blog style one</a>
-                                        <a href="blog-details.html">blog details</a>
-                                        <a href="blog-no-sideber.html">blog no sideber</a>
-                                        <a href="blog-left.html">blog left sideber</a>
-                                        <a href="blog-right.html">blog right sideber</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown active">
-                                <a href="contact.html">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-            </nav>
-            <!-- End Navigation -->
-        </header>
-
+    {% block content %}
+    
         <!-- Welcome Section Start -->
         <section class="banner-section pt-100 pb-70">
             <div class="container">
@@ -313,58 +121,7 @@
         </section>
         <!-- Contact Section End -->
 
-        <!-- Funfact Strat -->
-        <section  class="funfact-divider parallax-bg over-layer-white-deep pt-100 pb-70" data-background="images/bg/bg1.jpg" data-type="parallax" data-speed="5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="funfact-item style-2 text-center">
-                            <div class="count">
-                                <div class="icon">
-                                    <i class="flaticon-lifeline-in-a-heart-outline"></i>
-                                </div>
-                                <h2 class="start-count">119</h2>
-                            </div>
-                            <p>Heart Transplants</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="funfact-item style-2 text-center">
-                            <div class="count">
-                                <div class="icon">
-                                    <i class="flaticon-new-user"></i>
-                                </div>
-                                <h2 class="start-count">129</h2>
-                            </div>
-                            <p>BARIATRIC SURGERY</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="funfact-item style-2 text-center">
-                            <div class="count">
-                                <div class="icon">
-                                    <i class="flaticon-child-1"></i>
-                                </div>
-                                <h2 class="start-count">200</h2>
-                            </div>
-                            <p>CRITICAL CARE</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <div class="funfact-item style-2 text-center">
-                            <div class="count">
-                                <div class="icon">
-                                    <i class="flaticon-pill-1"></i>
-                                </div>
-                                <h2 class="start-count">180</h2>
-                            </div>
-                            <p>EXTPART Doctor</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Funfact End -->
+       
 
         <!-- Footer Style One Start -->
 
@@ -375,243 +132,58 @@
                   <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                         <div class="footer-item footer-widget-one">
-                          <img class="footer-logo" src="images/footer-logo.png" alt="footer-logo">
-                          <address>
-                            <p>Porro esse repellat quo exercitatrem ionemrit debitis incidunt cupidite.</p>
-                              <ul class="address">
-                                <li><i class="pe-7s-call"></i>Phone: 001 (407) 901-6400</li>
-                                <li><i class="pe-7s-print"></i>Fax: 001 (407) 901-6400</li>
-                                <li><i class="pe-7s-clock"></i>Friday - Sunday Closed</li>
-                                <li><i class="pe-7s-mail"></i><a href="mailto:">Email: info@bdcoder.com</a></li>
-                              </ul>
-                          </address>
-                          <ul class="social-icon bg-theme">
-                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                          </ul>
+                          <img class="footer-logo" src="static/images/footer-logo.png" alt="">
+                          
+
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                      <div class="footer-item">
-                        <div class="footer-title">
-                          <h4>Our Services </h4>
-                          <div class="border-style-1"></div>
-                        </div>
-                        <ul class="footer-list">
-                          <li><i class="pe-7s-angle-right"></i><a href="#">Sign up to theme</a></li>
-                          <li><i class="pe-7s-angle-right"></i><a href="#">Log in account</a></li>
-                          <li><i class="pe-7s-angle-right"></i><a href="#">Help and support</a></li>
-                          <li><i class="pe-7s-angle-right"></i><a href="#">Read our blog</a></li>
-                          <li><i class="pe-7s-angle-right"></i><a href="#">Visit our help section</a></li>
-                          <li><i class="pe-7s-angle-right"></i><a href="#">Donation Fund</a></li>
-                        </ul>
-                      </div>
-                    </div>
+                    
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
                       <div class="footer-item footer-widget-two">
-                        <div class="footer-title">
-                          <h4>Recent Post</h4>
-                          <div class="border-style-1"></div>
+                   
+                        <div class="news-area clearfix">
+                          <div class="news-img">
+                              <a href="#">
+                                <img src="static/images/footer/p1.jpg" alt="">
+                                <span class="fa fa-link"></span>
+                              </a>
+                          </div>
+            
                         </div>
                         <div class="news-area clearfix">
                           <div class="news-img">
                               <a href="#">
-                                <img src="images/footer/p1.jpg" alt="">
+                                <img src="static/images/footer/p2.jpg" alt="">
                                 <span class="fa fa-link"></span>
                               </a>
                           </div>
-                          <div class="news-content">
-                              <p><a href="#">Optimized for Learning</a></p>
-                              <span>07 Aug 2017</span>
-                          </div>
+             
                         </div>
                         <div class="news-area clearfix">
                           <div class="news-img">
                               <a href="#">
-                                <img src="images/footer/p2.jpg" alt="">
+                                <img src="static/images/footer/p3.jpg" alt="">
                                 <span class="fa fa-link"></span>
                               </a>
                           </div>
-                          <div class="news-content">
-                              <p><a href="#">Optimized for Learning</a></p>
-                              <span>07 Aug 2017</span>
-                          </div>
-                        </div>
-                        <div class="news-area clearfix">
-                          <div class="news-img">
-                              <a href="#">
-                                <img src="images/footer/p3.jpg" alt="">
-                                <span class="fa fa-link"></span>
-                              </a>
-                          </div>
-                          <div class="news-content">
-                              <p><a href="#">Optimized for Learning</a></p>
-                              <span>07 Aug 2017</span>
-                          </div>
+                 
                         </div>
                       </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                      <div class="footer-item">
-                        <div class="footer-title">
-                          <h4>Quick Contact</h4>
-                          <div class="border-style-1"></div>
-                        </div>
-                        <form method="post" action="#">
-                          <div class="form-row">
-                            <div class="form-group">
-                              <input type="email" name="Name" class="form-control" placeholder="Enter Name" required="">
-                            </div>
-                            <div class="form-group">
-                              <input type="email" name="email" class="form-control" placeholder="Enter Email" required="">
-                            </div>
-                            <div class="form-group">
-                              <div class="contact-textarea">
-                                <textarea class="form-control" rows="6" placeholder="Wright Message" name="message" required=""></textarea>
-                                  <button class="btn footer-btn-1" type="submit" value="Submit Form">Send Message</button>
-                              </div>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
             </div>
 
-            <div class="footer-copy-right bg-fb">
-              <div class="container">
-                <div class="row">
-                  <div class="col-12 text-center">
-                    <p>© 2018, All Rights Reserved, Design & Developed By:<a href="#"> TributeTheme</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
+
         </footer>
         <!-- Footer Style One End -->
 
-        <section class="sign-in-model">
-            <!-- Login -->
-            <div class="modal fade theme-login theme-model" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Login</h4>
-                            <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="sign-name-1" placeholder="Enter Name">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" id="sign-password-1" placeholder="Password">
-                                </div>
-                                <a class="btn btn-theme mt-2" href="#">Sign In</a>
-                                <div class="row mt-5">
-                                    <div class="col-sm-6">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input type="checkbox" class="form-check-input"> Remember Me</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 text-right">
-                                        <a href="#">Forgot Password</a>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="mb-2"> Don't Have an Account? <a href="#" class="theme-color">Register Now</a></div>
-                            <ul class="theme-media-blog">
-                                <li><a href="# "><i class="fa fa-twitter "></i></a></li>
-                                <li><a href="# "><i class="fa fa-facebook "></i></a></li>
-                                <li><a href="# "><i class="fa fa-google "></i></a></li>
-                                <li><a href="# "><i class="fa fa-github "></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Login -->
+       
 
-            <!-- Register -->
-            <div class="modal fade theme-register theme-model" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">Register</h4>
-                            <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="sign-username" placeholder="User Name">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="sign-email" placeholder="Email">
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" id="sign-password" placeholder="Password">
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="checkbox" class="form-check-input"> I Agree to the Terms and Conditions</label>
-                                </div>
-                                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                                <a class="btn btn-theme" href="#">Sign Up</a>
-                            </form>
-                        </div>
-                        <div class="modal-footer text-center">
-                            <div class="mb-3"> Already Have an Account? <a href="#" class="theme-color">Login</a></div>
-                            <ul class="theme-media-blog">
-                                <li><a href="# "><i class="fa fa-twitter "></i></a></li>
-                                <li><a href="# "><i class="fa fa-facebook "></i></a></li>
-                                <li><a href="# "><i class="fa fa-google "></i></a></li>
-                                <li><a href="# "><i class="fa fa-github "></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Register -->
-        </section>
 
-    </div>
-    <!-- Page-wrapper End -->
+
 
     <a href="#" class="scrollup"><i class="pe-7s-up-arrow" aria-hidden="true"></i></a>
 
-
-
-    <!-- Main JavaScript -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-
-
-    <!-- Optional JavaScript -->
-    <script src="js/bootstrap-dropdownhover.min.js"></script>
-    <script src="js/bootsnav.js"></script>
-    <script src="js/bootstrap-slider.js"></script>
-    <script src="js/jquery.flexslider-min.js"></script>
-    <script src="js/slick.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/retina.min.js"></script>
-    <script src="js/css3-animate-it.js"></script>
-    <script src="js/magnific-popup.min.js"></script>
-    <script src="js/jquery.fancybox.js"></script>
-    <script src="js/gallery.js"></script>
-    <script src="js/player-min.js"></script>
-
-
-    <!-- Custom JavaScript -->
-    <script src="js/script.js"></script>
-  </body>
-
-<!-- Mirrored from heatmaponline.com/html/hseba/v-1.1/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Oct 2018 13:53:53 GMT -->
-</html>
+{% endblock %}

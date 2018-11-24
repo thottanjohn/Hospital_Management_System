@@ -27,6 +27,16 @@
         <form action="" method="post" enctype="multipart/form-data">
                       
             {% csrf_token %}
+
+            {% if dept_form.non_field_errors %}
+            <ul>
+              {% for error in dept_form.non_field_errors %}
+                <li>{{ error }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        
+
     {% for field in dept_form %}
     <div class="row">
        <div class="col-md-2">    
@@ -35,9 +45,9 @@
           <sup>{{ field.help_text }}</sup>
         {% endif %}
         {{ field.errors }}
-       </div><div class="col-md-10 pull-left">
-         {{ field }}
-       </div>
+      </div><div class="col-md-10 pull-left">
+        {{ field }}
+      </div>
     </div>
  {% endfor %}
 

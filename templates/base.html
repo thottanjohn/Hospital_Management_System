@@ -70,47 +70,14 @@
                 </div>
                 <!-- End Top Search -->
                 <div class="container p-0">
-                    <!-- Start Atribute Navigation -->
-                    <div class="attr-nav">
-                        <ul>
-                            <li class="dropdown chart">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
-                                    <i class="fa fa-shopping-bag"></i>
-                                    <span class="badge">3</span>
-                                </a>
-                                <ul class="dropdown-menu cart-list animated fadeOutDown" style="display: none; opacity: 1;">
-                                    <li>
-                                        <a class="photo" href="#"><img alt="" class="cart-thumb" src="{% static 'images/shop/c1.jpg' %}"></a>
-                                        <h6><a href="#">Delica omtantur </a></h6>
-                                        <p>2x - <span class="price">$99.99</span></p>
-                                    </li>
-                                    <li>
-                                        <a class="photo" href="#"><img alt="" class="cart-thumb" src="{% static 'images/shop/c2.jpg' %}"></a>
-                                        <h6><a href="#">Omnes ocurreret</a></h6>
-                                        <p>1x - <span class="price">$33.33</span></p>
-                                    </li>
-                                    <li>
-                                        <a class="photo" href="#"><img alt="" class="cart-thumb" src="{% static 'images/shop/c3.jpg' %}"></a>
-                                        <h6><a href="#">Agam facilisis</a></h6>
-                                        <p>2x - <span class="price">$99.99</span></p>
-                                    </li>
-                                    <li class="total">
-                                        <span class="pull-right"><strong>Total</strong>: $0.00</span>
-                                        <a class="btn btn-default btn-cart" href="shop-cart.html">Cart</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        </ul>
-                    </div>
-                    <!-- End Atribute Navigation -->
+                    
 
                     <!-- Start Header Navigation -->
                     <div class="navbar-header">
                         <button data-target="#navbar-menu" data-toggle="collapse" class="navbar-toggle collapsed" type="button" aria-expanded="false">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <a href="index.html" class="navbar-brand"><img alt="" class="logo" src="{% static 'images/logo-1.png' %}"></a>
+                        <a href="{% url 'home'  %}" class="navbar-brand"><img alt="" class="logo" src="{% static 'images/logo-1.png' %}"></a>
                     </div>
                     <!-- End Header Navigation -->
 
@@ -147,8 +114,6 @@
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">Pages </a>
                                 <ul class="dropdown-menu animated fadeOutDown" style="display: none; opacity: 1;">
                                     <li class="dropdown">
-                                        <a href="appointment.html">appointment</a>
-                                        <a href="service.html">service</a>
                                         <a href="shop-list.html">shop list</a>
                                         <a href="shop-checkout.html">shop checkout</a>
                                         <a href="404.html">404</a>
@@ -156,7 +121,7 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="contact.html">Contact</a>
+                                <a href="{% url 'contact' %}">Contact</a>
                             </li>
                             <li class="dropdown">
                                     {% if user.is_authenticated %}
