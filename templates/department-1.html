@@ -3,7 +3,26 @@
     {% load static %}
 
     {% block content %}
+<style>
+TABLE{
+    border: black;
+    border-left: 2in;
+ 
+
+}
+th{
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+}
+td{
+
+    font-size: 14px;
+    padding: 20px;
+}
+</style>
     {% for j in dept %}
+
         <!-- Details Section Start -->
         <section class="service-details-section pt-70 pb-70">
             <div class="container">
@@ -47,8 +66,8 @@
                                 <div class="price-item">
                                     
                                 </div>
-                                <p class="mb-40">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic dignissimos consectetur quae iure consequatur sit, asperiores, quam eaque voluptas repellat a porro temporibus totam dicta enim eius ducimus repudiandae sequi inventore. Repellat error aliquam molestiae commodi sunt beatae eveniet itaque, quidem ab optio laudantium! Cupiditate commodi quae, hic!</p>
-                                <p class="mb-40">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum odit repellendus sit facilis dignissimos ut eius consectetur optio quaerat nesciunt suscipit ipsa hic quod labore possimus iusto rem, quam tempora quos earum delectus at.</p>
+                                <p class="mb-40">{{j.description}}</p>
+                               
                                
                             </div>
                         </div>
@@ -100,32 +119,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="section-content">
                                 
-                                <div class="row">
-                                        {% for i in patients %}
-                                    <div class="col-md-3 col-sm-6 col-xs-12">
-                                        <div class="team-single-col-two">
-                                                <figure class="advisors-box">
-                                                        <img alt="Image" src="{% static 'images/team/4.jpg' %}" class="img-responsive">
-                                                        <figcaption>
-                                                <div class="member-details text-left">
+                                
+<table>
+    <tr><th>Name   </th><th> Date of birth  </th><th>   Address  </th><th>  Date Of Admission </th><th>  Date Of Discharge </th><th>  Prescription </th></tr>
+    {% for i in patients %}
+    <tr><td>{{i.patient_name}}</td><td>{{i.dt_birth}}</td><td>{{i.patient_address}}</td><td>{{i.date_admission}}</td><td>{{i.date_discharge}}}</td><td>{{i.prescription}}</td></tr>
+
+    {% endfor %}</table>                            
+
                                                   
-                                                        <h4 class="mb-10">{{i.patient_name}}</h4>
-                                                <h5> 
-                                                        <span>DOB:{{i.dt_birth}}<br><br>
-                                                        <span>Date Of Admission:{{i.date_admission}}</span><br><br>
-                                                        <span>Date Of Discharge:{{i.date_discharge}}</span><br><br>
-                                                        <span>Address:{{i.patient_address}}</span><br><br>
-                                                </h5>
+                                               
                                                     
-                                        </div>
-                                        </figcaption>
-                                        </figure>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
+                 
+                     
+
                             </div>
                     </section>
         {% endfor %}

@@ -33,7 +33,8 @@
                             <h3>{{doc_profile.name}}</h3>
                             <ul class="specialist">
                                 <li><span>Department:{{doc_profile.department_name}}</span></li><br>
-                                <li><span>Grade:{{doc_profile.grade}}</span></li>
+                                <li><span>Grade:{{doc_profile.grade}}</span></li><br>
+                                <li><span>Member Since:{{doc_profile.schedule}}</span></li>
                             </ul>
                            <!-- <p class="mb-30"><strong>bio:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel doloribus animi officia nihil illum, distinctio ducimus doloremque asperiores, accusantium expedita magni amet eius totam nesciunt. Quod natus accusamus fuga laborum, delectus, tempora, similique assumenda repellat amet eveniet expedita odio minus. Quam, expedita commodi dolorum velit natus error optio.</p>
                             -->
@@ -53,8 +54,8 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="contact-info-box">
-                                        <strong>Member since</strong>
-                                        <p>{{doc_profile.schedule}}</p>
+                                        <strong>Visiting Time</strong>
+                                        <p>{{doc_profile.starttime}}-{{doc_profile.endtime}}</p>
                                     </div>
                                 </div>
                             </div>

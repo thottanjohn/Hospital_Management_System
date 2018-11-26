@@ -15,6 +15,8 @@ class Doctors(models.Model):
     address = models.CharField(max_length=100)
     contact_number = models.CharField(max_length=10, blank=True, null=True)
     grade = models.CharField(max_length=10, blank=True, null=True)
+    starttime= models.TimeField()
+    endtime= models.TimeField()
 
     class Meta:
         db_table = 'doctors'
@@ -37,6 +39,7 @@ class Patient(models.Model):
 class Department(models.Model):
     department_num = models.IntegerField(primary_key=True)
     department_name = models.CharField(max_length=20)
+    description= models.TextField(max_length=100)
     total_worker_count=models.IntegerField(blank=True, null=True)
     total_patient_count=models.IntegerField(blank=True, null=True)
     floor=models.IntegerField(blank=True, null=True)
