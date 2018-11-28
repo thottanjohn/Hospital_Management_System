@@ -4,21 +4,42 @@
 
     {% block content %}
         <!-- Banner Section End -->
-
+        <style>
+                .team-single-col-two .advisors-box .member-details h5 span {
+                    display: block;
+                    color: #2facde;
+                    font-size: 12px;
+                    font-weight: 700;
+                    font-family: 'Open Sans', sans-serif;
+                    padding: 5px 5px 5px 0;
+                }
+                .team-single-col-two .advisors-box  .member-details h5 p {
+                    color: #333;
+                }
+                
+                </style>
         <!-- Section Section Start -->
         <section class="services-section pt-70 pb-70">
             <div class="container">
+                    <div class="row pb-70">
+                            <div class="section-title style-2">
+                                <div class="col-md-12 text-center">
+                                    <h2><span>Nurses</span></h2>
+                                    <div class="section-title-icon"></div>
+                                   </div>
+                            </div>
+                        </div>
                 <div class="row">
                     {% for i in nurses %}
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="team-single-col-two">
-                                <figure class="advisors-box">>
+                                <figure class="advisors-box">
                                 <div class="member-details text-left">
                                         <h5>
-                                            <p>{{i.name}}</p><br>
-                                            <span>Department ::{{i.department_name}}</span><br>
-                                            <span>Address:{{i.address}}
-                                            </span><br>
+                                            <p>Name : {{i.name}}</p>
+                                            <span>Department :{{i.department_name}}</span>
+                                            <span>Address  :{{i.address}}
+                                            </span>
                                         </h5>
                                     </div>
                                 </figure>

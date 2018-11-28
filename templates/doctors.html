@@ -4,24 +4,47 @@
 
     {% block content %}
         <!-- Banner Section End -->
+<style>
+.team-single-col-two .advisors-box .member-details h5 span {
+    display: block;
+    color: #2facde;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    padding: 5px 5px 5px 0;
+}
+.team-single-col-two .advisors-box  .member-details h5 a {
+    color: #333;
+}
 
+</style>
         <!-- Section Section Start -->
         <section class="services-section pt-70 pb-70">
             <div class="container">
+                    <div class="row pb-70">
+                            <div class="section-title style-2">
+                                <div class="col-md-12 text-center">
+                                    <h2>Doctors <span>List</span></h2>
+                                    <div class="section-title-icon"></div>
+                                   </div>
+                            </div>
+                        </div>
+                
                 <div class="row">
                     {% for i in doctors %}
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="team-single-col-two">
                                 <figure class="advisors-box">
-
+                                        <img alt="Image" src="{% static 'images/team/creativeprofilepic.jpg' %}" class="img-responsive">
+                                    
                                 <div class="member-details text-left">
                                         <h5>
-                                            <a href="{% url 'docdetail' i.employee_id  %}">{{i.name}}</a><br>
-                                            <span>Department :{{i.department_name}}</span><br>
+                                            <a href="{% url 'docdetail' i.employee_id  %}">{{i.name}}</a>
+                                            <span>Department :{{i.department_name}}</span>
                                             <span>Contact:{{i.contact_number}}</span><br>
                                         </h5>
                                     </div>
-                     
+              
                                 </figure>
                                 
                         </div>

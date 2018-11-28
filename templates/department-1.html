@@ -92,7 +92,7 @@ td{
                             <div class="col-md-3 col-sm-6 col-xs-12">
                                 <div class="team-single-col-two">
                                         <figure class="advisors-box">
-                                                <img alt="Image" src="{% static 'images/team/2.jpg' %}" class="img-responsive">
+                                                <img alt="Image" src="{% static 'images/team/creativeprofilepic.jpg' %}" class="img-responsive">
                                                 <figcaption>
                                     <div class="member-details text-left">
                                                 <h5>
@@ -122,9 +122,9 @@ td{
                                 
                                 
 <table>
-    <tr><th>Name   </th><th> Date of birth  </th><th>   Address  </th><th>  Date Of Admission </th><th>  Date Of Discharge </th><th>  Prescription </th></tr>
+    <tr><th>Name   </th><th> Date of birth  </th><th>   Address  </th><th>  Date Of Admission </th><th>  Date Of Discharge </th><th> Prescription </th></tr>
     {% for i in patients %}
-    <tr><td>{{i.patient_name}}</td><td>{{i.dt_birth}}</td><td>{{i.patient_address}}</td><td>{{i.date_admission}}</td><td>{{i.date_discharge}}}</td><td>{{i.prescription}}</td></tr>
+    <tr><td>{{i.patient_name}}</td><td>{{i.dt_birth}}</td><td>{{i.patient_address}}</td><td>{{i.date_admission}}</td><td>{{i.date_discharge}}</td><td>{{i.prescription}}</td></tr>
 
     {% endfor %}</table>                            
 

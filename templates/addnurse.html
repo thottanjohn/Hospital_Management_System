@@ -31,7 +31,7 @@
             {% csrf_token %}
             {% if nurse_form.non_field_errors %}
             <ul>
-              {% for error in dept_form.non_field_errors %}
+              {% for error in nurse_form.non_field_errors %}
                 <li>{{ error }}</li>
               {% endfor %}
             </ul>

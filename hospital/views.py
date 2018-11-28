@@ -96,7 +96,11 @@ def addnurse(request):
                     return redirect('home')
     else:
         nurse_form = NurseForm() 
-    return render(request,'addnurse.html',{'nurse_form': nurse_form,})
+    cursor = connection.cursor()
+    cursor.execute("Select department_num,department_name from department ")
+    dept_dict=dictfetchall(cursor)
+    cursor.close() 
+    return render(request,'addnurse.html',{'nurse_form': nurse_form,'departments':dept_dict})
 
 @login_required
 def addemergency(request):
@@ -109,7 +113,7 @@ def addemergency(request):
                     #print >>sys.stderr,type(nurse_id)
                     doctor = emergency_form.cleaned_data['doctor']
                     nurse = emergency_form.cleaned_data['nurse']
-                    add_emergency = ("INSERT INTO Emergency  VALUES (%s, %s, %s)")
+                    add_emergency = ("INSERT INTO emergency  VALUES (%s, %s, %s)")
                     data_emergency = (date,doctor.employee_id,nurse.nurse_id)
                     cursor.execute(add_emergency, data_emergency)
                     cursor.close()
@@ -117,7 +121,7 @@ def addemergency(request):
     else:
         emergency_form = EmergencyForm()
     cursor = connection.cursor()
-    cursor.execute("Select department_num,department_name from department ");
+    cursor.execute("Select department_num,department_name from department ")
     dept_dict=dictfetchall(cursor)
     cursor.close() 
     return render(request,'addemergency.html',{'emergency_form': emergency_form,'departments':dept_dict})
@@ -182,7 +186,7 @@ def adddoctor(request):
                     starttime = doctor_form.cleaned_data['starttime']
                     endtime = doctor_form.cleaned_data['endtime']
                     add_doctor = ("INSERT INTO doctors  VALUES (%s, %s, %s, %s,%s,%s,%s)")
-                    data_doctor = (doctor_id,doctor_name,address,contact_no,grade,starttime,endtime)
+                    data_doctor = (doctor_id,doctor_name,address,contact_no,grade,endtime,starttime)
                     cursor.execute(add_doctor,data_doctor)
                     department_num = work_for_form.cleaned_data['department']
                     schedule = work_for_form.cleaned_data['schedule']
@@ -219,7 +223,7 @@ def displaydoctors(request):
 
 def displaynurses(request):
     cursor = connection.cursor()
-    cursor.execute("Select * from  nurses NATURAL JOIN department ")
+    cursor.execute("Select department_name,name,address from  nurses  NATURAL JOIN department ")
     nurses=dictfetchall(cursor)
     cursor.execute("Select department_num,department_name from department ")
     dept_dict=dictfetchall(cursor)    
@@ -228,8 +232,9 @@ def displaynurses(request):
 
 def displayemergency(request):
     cursor = connection.cursor()
-    cursor.execute("Select * from emergency NATURAL JOIN doctors NATURAL JOIN nurses ")
+    cursor.execute("Select n.name as nurse_name,d.name as name,date from emergency  as e JOIN doctors as d on e.doctor_id=d.employee_id  JOIN nurses as n on n.nurse_id = e.nurse_id ")
     emergency=dictfetchall(cursor)
+    print >>sys.stderr,emergency
     cursor.execute("Select department_num,department_name from department ")
     dept_dict=dictfetchall(cursor)    
     cursor.close()
@@ -240,7 +245,7 @@ def docprofile(request,doc_id):
     #print >>sys.stderr,type(doc_id),doc_id
     cursor.execute("Select * from  doctors NATURAL JOIN works_for  NATURAL JOIN department where employee_id =%s",[doc_id]);
     doc_profile=dictfetchall(cursor)
-    cursor.execute("Select department_num,department_name from department ");
+    cursor.execute("Select department_num,department_name from department ")
     dept_dict=dictfetchall(cursor)
     #print >>sys.stderr,doc_id
     cursor.close()
@@ -262,6 +267,7 @@ def displaydept(request,dept_id):
 
     cursor.execute("Select * from  patient NATURAL JOIN admitted  NATURAL JOIN department where department_num=%s",dept_id);
     patients=dictfetchall(cursor)
+    print >>sys.stderr,patients
     cursor.close()
     return render(request,'department-1.html',{'doc_dict':doc_dict,'patients':patients,'departments':dept_dict,'dept':dept})
 def contact(request):

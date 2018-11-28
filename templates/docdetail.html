@@ -12,8 +12,8 @@
                         <h2>doctor details</h2>
                         <div class="banner-link">
                             <ul>
-                                <li><i class="fa fa-angle-right"></i><a href="index.html">Home</a></li>
-                                <li><i class="fa fa-angle-right"></i><a href="team-details.html">doctor details</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{% url 'home'  %}">Home</a></li>
+                                <li><i class="fa fa-angle-right"></i><a href="{% url 'doctors' %}">doctor details</a></li>
                             </ul>
                         </div>
                     </div>
@@ -30,6 +30,12 @@
                     <div class="col-md-8">
                         <div class="content">
                             {% for doc_profile in doc_profile %}
+                            <div class="col-md-4">
+                                    <div class="thumb">
+                                        <img src="{% static 'images/team/creativeprofilepic.jpg' %}"  alt="">
+                                    </div>
+                                </div>
+            
                             <h3>{{doc_profile.name}}</h3>
                             <ul class="specialist">
                                 <li><span>Department:{{doc_profile.department_name}}</span></li><br>
@@ -37,7 +43,7 @@
                                 <li><span>Member Since:{{doc_profile.schedule}}</span></li>
                             </ul>
                            <!-- <p class="mb-30"><strong>bio:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel doloribus animi officia nihil illum, distinctio ducimus doloremque asperiores, accusantium expedita magni amet eius totam nesciunt. Quod natus accusamus fuga laborum, delectus, tempora, similique assumenda repellat amet eveniet expedita odio minus. Quam, expedita commodi dolorum velit natus error optio.</p>
-                            -->
+                            --><br><br><br><br>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="contact-info-box">
