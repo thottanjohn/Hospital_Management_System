@@ -99,6 +99,30 @@ def addnurse(request):
     return render(request,'addnurse.html',{'nurse_form': nurse_form,})
 
 @login_required
+def addemergency(request):
+    if request.method == 'POST':
+        emergency_form = EmergencyForm(request.POST)
+        cursor = connection.cursor()
+        if emergency_form.is_valid():
+                    #print >>sys.stderr, type(int(request.POST['nurse_id']))
+                    date = emergency_form.cleaned_data['date']
+                    #print >>sys.stderr,type(nurse_id)
+                    doctor = emergency_form.cleaned_data['doctor']
+                    nurse = emergency_form.cleaned_data['nurse']
+                    add_emergency = ("INSERT INTO Emergency  VALUES (%s, %s, %s)")
+                    data_emergency = (date,doctor.employee_id,nurse.nurse_id)
+                    cursor.execute(add_emergency, data_emergency)
+                    cursor.close()
+                    return redirect('home')
+    else:
+        emergency_form = EmergencyForm()
+    cursor = connection.cursor()
+    cursor.execute("Select department_num,department_name from department ");
+    dept_dict=dictfetchall(cursor)
+    cursor.close() 
+    return render(request,'addemergency.html',{'emergency_form': emergency_form,'departments':dept_dict})
+
+@login_required
 def addpatient(request):
     if request.method == 'POST':
         patient_form = PatientForm(request.POST)
@@ -202,6 +226,15 @@ def displaynurses(request):
     cursor.close()
     return render(request,'nurses.html',{'nurses':nurses,'departments':dept_dict})
 
+def displayemergency(request):
+    cursor = connection.cursor()
+    cursor.execute("Select * from emergency NATURAL JOIN doctors NATURAL JOIN nurses ")
+    emergency=dictfetchall(cursor)
+    cursor.execute("Select department_num,department_name from department ")
+    dept_dict=dictfetchall(cursor)    
+    cursor.close()
+    return render(request,'emergency.html',{'emergency':emergency,'departments':dept_dict})
+    
 def docprofile(request,doc_id):
     cursor = connection.cursor()
     #print >>sys.stderr,type(doc_id),doc_id

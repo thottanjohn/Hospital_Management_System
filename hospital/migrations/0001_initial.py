@@ -138,15 +138,5 @@ class Migration(migrations.Migration):
                 'managed': False,
             },
         ),
-        migrations.CreateModel(
-            name='Student',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('rollno', models.IntegerField(blank=True, db_column='Rollno', null=True)),
-            ],
-            options={
-                'db_table': 'student',
-                'managed': True,
-            },
-        ),
+      
     ]

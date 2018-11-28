@@ -114,6 +114,9 @@ class EmergencyForm(forms.ModelForm):
     class Meta:
         model = Emergency
         fields = ('date', 'doctor', 'nurse')
+        widgets = {
+            'date': DateInput()
+        }
 
 
 

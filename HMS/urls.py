@@ -28,12 +28,14 @@ urlpatterns = [
     url(r'^addnurse/$',views.addnurse,name="addnurse"),
     url(r'^addpatient/$',views.addpatient,name="addpatient"),
     url(r'^adddoctor/$',views.adddoctor,name="adddoctor"),
+    url(r'^addemergency/$',views.addemergency,name="addemergency"),
     url(r'^Doctors/$',views.displaydoctors,name="doctors"),
     url(r'^Nurses/$',views.displaynurses,name="nurses"),
     url(r'^department/(?P<dept_id>[\w\-]*)$', views.displaydept, name='departmentdetail'),
     url(r'^doctors/(?P<doc_id>[\w\-]*)$', views.docprofile, name='docdetail'),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^contact/',views.contact,name="contact"),
+    url(r'^emergency/',views.displayemergency,name="displayemergency"),
     ]
 """ 
     url(r'^about/$',views.about,name="about"),  

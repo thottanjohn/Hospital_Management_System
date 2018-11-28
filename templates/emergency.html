@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+    
+    {% load static %}
+
+    {% block content %}
+    <style>
+TABLE{
+    border: black;
+    border-left: 2in;
+ 
+
+}
+th{
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+}
+td{
+
+    font-size: 14px;
+    padding: 20px;
+}
+</style>
+        <!-- Banner Section End -->
+
+        <!-- Section Section Start -->
+        <section class="services-section pt-70 pb-70">
+            <div class="container">
+                <div class="row">
+                    <table>
+    <tr><th>Date   </th><th> Doctor  </th><th>   Nurse  </th></tr>
+    {% for i in emergency%}
+    sadsa
+    <tr><td>{{i.date}}</td><td>{{i.name}}</td></tr>
+
+    {% endfor %}</table>                            
+
+                </div>
+            </div>
+        </section>
+        <!-- Section Section End -->
+        {% endblock %}
+
+        <!--
+             <figure class="advisors-box">
+                                <img alt="Image" src="images/team/1.jpg" class="img-responsive">
+                                <div class="overly">
+                                    <div class="item-overly">
+                                        <ul class="member-description list-inline">
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitch"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <figcaption>
+                                    <div class="member-details text-left">
+                                        <h5>
+                                            <a href="#">John Doe</a>
+                                            <span>Finance Advisor</span>
+                                        </h5>
+                                    </div>
+                                </figcaption>
+                            </figure>
+        -->
