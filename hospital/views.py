@@ -2,24 +2,12 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django import forms
-from django.core.mail import send_mail
-from django.conf import settings
-from django.shortcuts import render,redirect,render_to_response
+from django.shortcuts import render,redirect
 #from .models import Picto,userlike,Profile
-from .models import Department,Patient,Nurses,WorksFor,Doctors,Emergency,Admitted
 from .forms import DoctorForm,DepartmentForm,PatientForm,WorksforForm,NurseForm,AdmittedForm,EmergencyForm
-from django.views.generic.edit import CreateView,UpdateView,DeleteView
+
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.http import Http404,HttpResponse,HttpResponseRedirect,HttpResponsePermanentRedirect
-from django.db import transaction,connection
-from django.template import RequestContext
-from django.shortcuts import render_to_response
-from django.core.mail import EmailMessage
-from django.core.exceptions import ValidationError
-import mysql.connector
-import sys
+from django.db import connection
 # Create your views here.
 
 
@@ -56,7 +44,8 @@ def adddept(request):
                     floor=dept_form.cleaned_data['floor']
                     
                     add_dept = ("INSERT INTO department  VALUES (%s, %s, %s, %s,%s,%s)")
-                    data_dept = (dept_num,department_name,"0",floor,"0",description)
+                    data_dept = (dept_num,department_name,description,"0","0",floor)
+                    print(data_dept)
                     cursor.execute(add_dept, data_dept)
                     cursor.close()
                     return redirect('home')
@@ -186,7 +175,7 @@ def adddoctor(request):
                     starttime = doctor_form.cleaned_data['starttime']
                     endtime = doctor_form.cleaned_data['endtime']
                     add_doctor = ("INSERT INTO doctors  VALUES (%s, %s, %s, %s,%s,%s,%s)")
-                    data_doctor = (doctor_id,doctor_name,address,contact_no,grade,endtime,starttime)
+                    data_doctor = (doctor_id,doctor_name,address,contact_no,grade,starttime,endtime)
                     cursor.execute(add_doctor,data_doctor)
                     department_num = work_for_form.cleaned_data['department']
                     schedule = work_for_form.cleaned_data['schedule']
@@ -234,7 +223,7 @@ def displayemergency(request):
     cursor = connection.cursor()
     cursor.execute("Select n.name as nurse_name,d.name as name,date from emergency  as e JOIN doctors as d on e.doctor_id=d.employee_id  JOIN nurses as n on n.nurse_id = e.nurse_id ")
     emergency=dictfetchall(cursor)
-    print >>sys.stderr,emergency
+    # print >>sys.stderr,emergency
     cursor.execute("Select department_num,department_name from department ")
     dept_dict=dictfetchall(cursor)    
     cursor.close()
@@ -267,7 +256,7 @@ def displaydept(request,dept_id):
 
     cursor.execute("Select * from  patient NATURAL JOIN admitted  NATURAL JOIN department where department_num=%s",dept_id);
     patients=dictfetchall(cursor)
-    print >>sys.stderr,patients
+    # print >>sys.stderr,patients
     cursor.close()
     return render(request,'department-1.html',{'doc_dict':doc_dict,'patients':patients,'departments':dept_dict,'dept':dept})
 def contact(request):

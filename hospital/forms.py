@@ -1,12 +1,6 @@
 from django import forms
-from django.contrib.admin import widgets
 from .models import  Doctors,Department,Nurses,Emergency,WorksFor,Admitted,Patient
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from django import forms
-from django.core.exceptions import ValidationError
-from django.core.files import File
-from datetime import datetime, timedelta
+
 import sys
 class DateInput(forms.DateInput):
     input_type = 'date'
